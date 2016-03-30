@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4AED7C259684A8957DF9C01E'
+               BlueprintIdentifier = 'A5E5F151700ACB1C00130FE5'
                BlueprintName = 'Navi'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Navi.framework'>

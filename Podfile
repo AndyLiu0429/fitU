@@ -24,6 +24,10 @@ def pods
     pod 'JPush-iOS-SDK', '1.8.8'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'CollectionViewWaterfallLayout'
+    pod 'FastImageCache'
+    pod 'SwiftyJSON'
+
 end
 
 target ‘fitu’ do

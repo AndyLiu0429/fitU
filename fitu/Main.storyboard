@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -16,71 +17,119 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Kec-cH-jdM" kind="relationship" relationship="viewControllers" id="juu-1s-MwO"/>
-                        <segue destination="f4A-bO-TFw" kind="relationship" relationship="viewControllers" id="ZCb-im-YtI"/>
-                        <segue destination="U9h-Dm-izX" kind="relationship" relationship="viewControllers" id="Di9-mS-c46"/>
-                        <segue destination="oXj-tC-EDt" kind="relationship" relationship="viewControllers" id="n0P-rf-wtI"/>
+                        <segue destination="Fpk-PE-zyy" kind="relationship" relationship="viewControllers" id="sYx-sz-c8k"/>
+                        <segue destination="k1D-4U-Dtz" kind="relationship" relationship="viewControllers" id="59a-MY-Gke"/>
+                        <segue destination="Tmy-h6-Kbf" kind="relationship" relationship="viewControllers" id="xpl-po-JfQ"/>
+                        <segue destination="ed1-Ya-XPH" kind="relationship" relationship="viewControllers" id="cwr-jr-pTy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CMa-ZP-SEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2778" y="336"/>
         </scene>
-        <!--Discover-->
-        <scene sceneID="qqb-uv-xjr">
-            <objects>
-                <navigationController id="Kec-cH-jdM" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" id="FN2-H2-ozW"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BXG-xF-q2Z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Scd-ge-YDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2035" y="267"/>
-        </scene>
         <!--Profile-->
-        <scene sceneID="WtF-xl-cfz">
+        <scene sceneID="RRp-As-EnB">
             <objects>
-                <navigationController id="oXj-tC-EDt" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="Wag-MR-VRk"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M2P-XW-RjW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s9A-6O-6Uk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ed1-Ya-XPH" customClass="ProfileViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DQ5-a7-0h2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wv8-na-LtA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tyu-Vr-s4c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="he4-GK-mDP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g94-9C-Etg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2027" y="1014"/>
+            <point key="canvasLocation" x="-3135" y="1048"/>
         </scene>
         <!--Feeds-->
-        <scene sceneID="Oel-YY-YLx">
+        <scene sceneID="eh1-7K-0zU">
             <objects>
-                <navigationController id="U9h-Dm-izX" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feeds" id="Bnd-Nc-Oh0"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2CX-xY-Zbh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qOr-If-csT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Tmy-h6-Kbf" customClass="FeedsViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lVt-T1-XoF"/>
+                        <viewControllerLayoutGuide type="bottom" id="US8-dS-W98"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cm4-Xg-Tbk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Feeds" id="Y6k-lr-DUG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-07-SVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3820" y="1445"/>
+            <point key="canvasLocation" x="-2417" y="1033"/>
         </scene>
-        <!--TakePhoto-->
-        <scene sceneID="aWp-Uh-FYS">
+        <!--Photo-->
+        <scene sceneID="4nK-60-CE7">
             <objects>
-                <navigationController id="f4A-bO-TFw" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="TakePhoto" id="l8s-yU-z00"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iqs-3j-8FR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z4J-gy-gCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="k1D-4U-Dtz" customClass="TakePhotoViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b2T-Pm-P6u"/>
+                        <viewControllerLayoutGuide type="bottom" id="IK9-oa-oIb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="adB-5Q-BNW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Photo" id="8lk-xf-iBS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tBj-nW-Kfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2729" y="1543"/>
+            <point key="canvasLocation" x="-1716" y="842"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="Coc-Em-ADg">
+            <objects>
+                <viewController id="Fpk-PE-zyy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R2O-Ir-xNB"/>
+                        <viewControllerLayoutGuide type="bottom" id="s3A-Bj-xQb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="URk-hN-J1w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="me6-Ls-5Fi" customClass="DiscoverPhotoCollectionView">
+                                <rect key="frame" x="20" y="20" width="560" height="531"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="knk-7k-yAM">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="NQL-mR-QRS">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s3A-Bj-xQb" firstAttribute="top" secondItem="me6-Ls-5Fi" secondAttribute="bottom" id="5VG-E0-EVE"/>
+                            <constraint firstItem="me6-Ls-5Fi" firstAttribute="leading" secondItem="URk-hN-J1w" secondAttribute="leadingMargin" id="HGf-ML-snF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="me6-Ls-5Fi" secondAttribute="trailing" id="tRe-ua-NeO"/>
+                            <constraint firstItem="me6-Ls-5Fi" firstAttribute="top" secondItem="R2O-Ir-xNB" secondAttribute="bottom" id="uXU-Fd-KNW"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Discover" id="cC6-qE-753"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TnG-UT-T3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2042" y="171"/>
         </scene>
     </scenes>
 </document>

@@ -6,10 +6,12 @@ PODS:
     - APAddressBook/Core
   - Appsee (2.2)
   - Base64 (1.1.2)
+  - CollectionViewWaterfallLayout (0.2.2)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - DeviceGuru (1.3.5)
   - Fabric (1.6.7)
+  - FastImageCache (1.5.1)
   - FXBlurView (1.6.4)
   - JPush-iOS-SDK (1.8.8)
   - Kanna (1.0.5)
@@ -26,6 +28,7 @@ PODS:
     - Realm (= 0.98.6)
   - Ruler (0.6)
   - SocketRocket (0.5.0)
+  - SwiftyJSON (2.3.2)
   - TPKeyboardAvoiding (1.2.11)
 
 DEPENDENCIES:
@@ -34,9 +37,11 @@ DEPENDENCIES:
   - APAddressBook/Swift
   - Appsee
   - Base64
+  - CollectionViewWaterfallLayout
   - Crashlytics
   - DeviceGuru
   - Fabric
+  - FastImageCache
   - FXBlurView
   - JPush-iOS-SDK (= 1.8.8)
   - Kanna
@@ -49,6 +54,7 @@ DEPENDENCIES:
   - RealmSwift
   - Ruler
   - SocketRocket
+  - SwiftyJSON
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
@@ -57,9 +63,11 @@ SPEC CHECKSUMS:
   APAddressBook: 2a91bf05999548bea210ec9d1a68073f4dc8bfce
   Appsee: c95173e65acaab0ffc8a082c70633c9f5f45d5f0
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
+  CollectionViewWaterfallLayout: b4f9aabad89609696ea3f6dceff956dd58e2bae4
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DeviceGuru: 899d7dd478962e6e0f995fcdac0ca2741804d203
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  FastImageCache: 2e7a6f677b15336eb3d1a4092a494676256c891d
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   JPush-iOS-SDK: d4c097d8abbdd0837e24d44b41aacf64a6feddfd
   Kanna: 1df5cd995dc1f3a282e3dcf7521cfef2f069ac4d
@@ -73,6 +81,7 @@ SPEC CHECKSUMS:
   RealmSwift: c7239c52c83f8c43525a5269ba7be1694da33afc
   Ruler: b36ec3bbc5fc6c3b7f629a6052cc1c17ada4b280
   SocketRocket: 2c51efccd2d73c99a923407ca4b06e7e9da95dbf
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7
 
 COCOAPODS: 0.39.0
