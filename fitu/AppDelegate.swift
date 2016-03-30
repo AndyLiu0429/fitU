@@ -186,20 +186,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        
-        if let pusherID = YepUserDefaults.pusherID.value {
-            if notRegisteredPush {
-                notRegisteredPush = false
-                
-                registerThirdPartyPushWithDeciveToken(deviceToken, pusherID: pusherID)
-            }
-        }
-        
-        // 纪录下来，用于初次登录或注册有 pusherID 后，或“注销再登录”
-        self.deviceToken = deviceToken
-    }
-    
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
         
         defer {

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0C652B7C6B4B159A3AA47B32 /* Pods_fitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECDD3ED2C75B0B8E259F1C2 /* Pods_fitu.framework */; };
+		F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */; };
+		F033709E1CAC2DA9004209C5 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */; };
+		F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709F1CAC332A004209C5 /* loginViewController.swift */; };
+		F03370A21CAC5465004209C5 /* show.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03370A11CAC5465004209C5 /* show.storyboard */; };
 		F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AF81CAA15EF00961268 /* AppDelegate.swift */; };
 		F0439AFB1CAA15EF00961268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AFA1CAA15EF00961268 /* ViewController.swift */; };
 		F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0439AFC1CAA15EF00961268 /* Main.storyboard */; };
@@ -75,7 +79,6 @@
 		F06B86FC1CAAF7810001149F /* YepLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F21CAAF7810001149F /* YepLocationService.swift */; };
 		F06B86FD1CAAF7810001149F /* YepNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F31CAAF7810001149F /* YepNetworking.swift */; };
 		F06B86FE1CAAF7810001149F /* YepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F41CAAF7810001149F /* YepService.swift */; };
-		F06B86FF1CAAF7810001149F /* YepServiceSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F51CAAF7810001149F /* YepServiceSync.swift */; };
 		F06B87001CAAF7810001149F /* YepStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F61CAAF7810001149F /* YepStorageService.swift */; };
 		F06B87021CAAF8CC0001149F /* registerPickGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B87011CAAF8CC0001149F /* registerPickGender.swift */; };
 		F06B87041CAB374F0001149F /* registerEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B87031CAB374F0001149F /* registerEmail.swift */; };
@@ -85,6 +88,10 @@
 		05686F10982796B3E6726078 /* Pods-fitu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fitu/Pods-fitu.debug.xcconfig"; sourceTree = "<group>"; };
 		1D25149FB86B3F3D2258356F /* Pods-fitu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitu.release.xcconfig"; path = "Pods/Target Support Files/Pods-fitu/Pods-fitu.release.xcconfig"; sourceTree = "<group>"; };
 		7ECDD3ED2C75B0B8E259F1C2 /* Pods_fitu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPickAvatarViewController.swift; sourceTree = "<group>"; };
+		F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		F033709F1CAC332A004209C5 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		F03370A11CAC5465004209C5 /* show.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = show.storyboard; sourceTree = "<group>"; };
 		F0439AF51CAA15EF00961268 /* fitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0439AF81CAA15EF00961268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0439AFA1CAA15EF00961268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +161,6 @@
 		F06B86F21CAAF7810001149F /* YepLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepLocationService.swift; sourceTree = "<group>"; };
 		F06B86F31CAAF7810001149F /* YepNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepNetworking.swift; sourceTree = "<group>"; };
 		F06B86F41CAAF7810001149F /* YepService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepService.swift; sourceTree = "<group>"; };
-		F06B86F51CAAF7810001149F /* YepServiceSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepServiceSync.swift; sourceTree = "<group>"; };
 		F06B86F61CAAF7810001149F /* YepStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepStorageService.swift; sourceTree = "<group>"; };
 		F06B87011CAAF8CC0001149F /* registerPickGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerPickGender.swift; sourceTree = "<group>"; };
 		F06B87031CAB374F0001149F /* registerEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerEmail.swift; sourceTree = "<group>"; };
@@ -187,6 +193,14 @@
 				1D25149FB86B3F3D2258356F /* Pods-fitu.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F033709C1CAC2D8C004209C5 /* CameraPreview */ = {
+			isa = PBXGroup;
+			children = (
+				F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */,
+			);
+			name = CameraPreview;
 			sourceTree = "<group>";
 		};
 		F0439AEC1CAA15EF00961268 = {
@@ -223,6 +237,7 @@
 				F0439AFC1CAA15EF00961268 /* Main.storyboard */,
 				F0439B021CAA15EF00961268 /* Assets.xcassets */,
 				F0439B041CAA15EF00961268 /* intro.storyboard */,
+				F03370A11CAC5465004209C5 /* show.storyboard */,
 				F0439B071CAA15EF00961268 /* Info.plist */,
 				F0439AFF1CAA15EF00961268 /* fitu.xcdatamodeld */,
 			);
@@ -232,6 +247,7 @@
 		F0439B101CAA17D600961268 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F033709C1CAC2D8C004209C5 /* CameraPreview */,
 				F06B86C81CAAE9D60001149F /* Labels */,
 				F06B86C31CAAE9980001149F /* TextFields */,
 				F0439B221CAA190D00961268 /* ProgressViews */,
@@ -301,7 +317,9 @@
 				F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */,
 				F06B86C01CAAE9600001149F /* SegueViewController.swift */,
 				F06B87011CAAF8CC0001149F /* registerPickGender.swift */,
+				F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */,
 				F06B87031CAB374F0001149F /* registerEmail.swift */,
+				F033709F1CAC332A004209C5 /* loginViewController.swift */,
 				F06B86BE1CAAE9270001149F /* BaseViewController.swift */,
 			);
 			name = ViewControllers;
@@ -376,7 +394,6 @@
 				F06B86F21CAAF7810001149F /* YepLocationService.swift */,
 				F06B86F31CAAF7810001149F /* YepNetworking.swift */,
 				F06B86F41CAAF7810001149F /* YepService.swift */,
-				F06B86F51CAAF7810001149F /* YepServiceSync.swift */,
 				F06B86F61CAAF7810001149F /* YepStorageService.swift */,
 			);
 			name = Services;
@@ -443,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03370A21CAC5465004209C5 /* show.storyboard in Resources */,
 				F0439B061CAA15EF00961268 /* intro.storyboard in Resources */,
 				F0439B4B1CAA199100961268 /* NSDateTimeAgo.bundle in Resources */,
 				F0439B031CAA15EF00961268 /* Assets.xcassets in Resources */,
@@ -513,17 +531,18 @@
 				F06B86EA1CAAF68D0001149F /* OpenGraphInfoType.swift in Sources */,
 				F06B86D01CAAEA330001149F /* YepConfig.swift in Sources */,
 				F0439B1D1CAA18E600961268 /* MessageTypeButton.swift in Sources */,
-				F06B86FF1CAAF7810001149F /* YepServiceSync.swift in Sources */,
 				F06B86BF1CAAE9270001149F /* BaseViewController.swift in Sources */,
 				F0439B501CAA199100961268 /* NSURLRequest+cURL.swift in Sources */,
 				F06B86FA1CAAF7810001149F /* YepAudioService.swift in Sources */,
 				F0439B4D1CAA199100961268 /* NSParagraphStyle+Yep.swift in Sources */,
 				F06B86DE1CAAEA800001149F /* YepHUD.swift in Sources */,
+				F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */,
 				F0439B491CAA199100961268 /* NSDate+Extension.swift in Sources */,
 				F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */,
 				F0439B471CAA199100961268 /* Double+Yep.swift in Sources */,
 				F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */,
 				F06B86FB1CAAF7810001149F /* YepDownloader.swift in Sources */,
+				F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */,
 				F06B86F71CAAF7810001149F /* FayeService.swift in Sources */,
 				F0439B551CAA199100961268 /* UIColor+Yep.swift in Sources */,
 				F06B86DB1CAAEA800001149F /* YepAlert.swift in Sources */,
@@ -545,6 +564,7 @@
 				F06B86C61CAAE9B90001149F /* BorderTextField.swift in Sources */,
 				F0439B011CAA15EF00961268 /* fitu.xcdatamodeld in Sources */,
 				F06B86E21CAAEA800001149F /* YepUserDefaults.swift in Sources */,
+				F033709E1CAC2DA9004209C5 /* CameraPreviewView.swift in Sources */,
 				F06B86E01CAAEA800001149F /* YepMedia.swift in Sources */,
 				F0439B541CAA199100961268 /* UICollectionView+Yep.swift in Sources */,
 				F06B87041CAB374F0001149F /* registerEmail.swift in Sources */,

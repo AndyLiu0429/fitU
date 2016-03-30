@@ -66,7 +66,7 @@ class registerPickGender: UIViewController {
                 
                 if created {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.performSegueWithIdentifier("registerPickGender", sender: nil)
+                        self.performSegueWithIdentifier("showRegisterPickAvatar", sender: nil)
                     })
                     
                 } else {

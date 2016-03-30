@@ -50,6 +50,10 @@ func saveTokenAndUserInfoOfLoginUser(loginUser: LoginUser) {
     YepUserDefaults.userID.value = loginUser.userID
     YepUserDefaults.username.value = loginUser.username
     YepUserDefaults.avatarURLString.value = loginUser.avatarURLString
+    YepUserDefaults.height.value = String(loginUser.height)
+    YepUserDefaults.weight.value = String(loginUser.weight)
+    YepUserDefaults.bodyShape.value = String(loginUser.bodyShape)
+    YepUserDefaults.gender.value = String(loginUser.gender)
 
 
     // NOTICE: 因为一些操作依赖于 accessToken 做检测，又可能依赖上面其他值，所以要放在最后赋值
@@ -259,9 +263,10 @@ func loginByUsername(username: String, password: String, failureHandler: Failure
                     let height = user["height"] as! Float
                     let weight = user["weight"] as! Float
                     let bodyShape = user["bodyShape"] as! Int
+                    let gender = user["gender"] as! Int
                     let avatarURLString = user["avatar_url"] as? String
                     
-                    return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, avatarURLString: avatarURLString)
+                    return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, gender:gender, avatarURLString: avatarURLString)
                 }
             }
         }
