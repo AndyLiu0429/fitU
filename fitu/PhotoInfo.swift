@@ -21,11 +21,16 @@ class PhotoInfo: NSObject, FICEntity {
         return UUID
     }
     
+    var photoSize: CGSize
+    
     var sourceImageURL: NSURL
     var request: Alamofire.Request?
     
     init(sourceImageURL: NSURL) {
         self.sourceImageURL = sourceImageURL
+        
+        let random = Int(arc4random_uniform((UInt32(100))))
+        self.photoSize = CGSize(width: 140, height: 50 + random)
         super.init()
     }
     

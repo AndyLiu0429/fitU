@@ -24,9 +24,10 @@
 		F03370B71CAC61AF004209C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B61CAC61AF004209C5 /* ProfileViewController.swift */; };
 		F03370BA1CAC6B7D004209C5 /* YepNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */; };
 		F03370BE1CAC731D004209C5 /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370BD1CAC731D004209C5 /* PhotoInfo.swift */; };
+		F03370C01CAC7607004209C5 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370BF1CAC7607004209C5 /* CollectionViewWaterfallLayout.swift */; };
+		F03370C21CAC76CB004209C5 /* FastImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370C11CAC76CB004209C5 /* FastImageHelper.swift */; };
 		F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AF81CAA15EF00961268 /* AppDelegate.swift */; };
 		F0439AFB1CAA15EF00961268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AFA1CAA15EF00961268 /* ViewController.swift */; };
-		F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0439AFC1CAA15EF00961268 /* Main.storyboard */; };
 		F0439B011CAA15EF00961268 /* fitu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0439AFF1CAA15EF00961268 /* fitu.xcdatamodeld */; };
 		F0439B031CAA15EF00961268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0439B021CAA15EF00961268 /* Assets.xcassets */; };
 		F0439B061CAA15EF00961268 /* intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0439B041CAA15EF00961268 /* intro.storyboard */; };
@@ -115,10 +116,11 @@
 		F03370B61CAC61AF004209C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepNavigationController.swift; sourceTree = "<group>"; };
 		F03370BD1CAC731D004209C5 /* PhotoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
+		F03370BF1CAC7607004209C5 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		F03370C11CAC76CB004209C5 /* FastImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastImageHelper.swift; sourceTree = "<group>"; };
 		F0439AF51CAA15EF00961268 /* fitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0439AF81CAA15EF00961268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0439AFA1CAA15EF00961268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F0439AFD1CAA15EF00961268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0439B001CAA15EF00961268 /* fitu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fitu.xcdatamodel; sourceTree = "<group>"; };
 		F0439B021CAA15EF00961268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0439B051CAA15EF00961268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/intro.storyboard; sourceTree = "<group>"; };
@@ -291,7 +293,6 @@
 				F0439B101CAA17D600961268 /* Views */,
 				F0439AF81CAA15EF00961268 /* AppDelegate.swift */,
 				F0439AFA1CAA15EF00961268 /* ViewController.swift */,
-				F0439AFC1CAA15EF00961268 /* Main.storyboard */,
 				F0439B021CAA15EF00961268 /* Assets.xcassets */,
 				F0439B041CAA15EF00961268 /* intro.storyboard */,
 				F03370A11CAC5465004209C5 /* show.storyboard */,
@@ -429,6 +430,8 @@
 				F06B86D81CAAEA800001149F /* YepMedia.swift */,
 				F06B86D91CAAEA800001149F /* YepSoundEffect.swift */,
 				F06B86DA1CAAEA800001149F /* YepUserDefaults.swift */,
+				F03370BF1CAC7607004209C5 /* CollectionViewWaterfallLayout.swift */,
+				F03370C11CAC76CB004209C5 /* FastImageHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -530,7 +533,6 @@
 				F0439B4B1CAA199100961268 /* NSDateTimeAgo.bundle in Resources */,
 				F03370AD1CAC5FD8004209C5 /* Main.storyboard in Resources */,
 				F0439B031CAA15EF00961268 /* Assets.xcassets in Resources */,
-				F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +615,7 @@
 				F0439B471CAA199100961268 /* Double+Yep.swift in Sources */,
 				F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */,
 				F06B86FB1CAAF7810001149F /* YepDownloader.swift in Sources */,
+				F03370C21CAC76CB004209C5 /* FastImageHelper.swift in Sources */,
 				F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */,
 				F0439B551CAA199100961268 /* UIColor+Yep.swift in Sources */,
 				F06B86DB1CAAEA800001149F /* YepAlert.swift in Sources */,
@@ -650,6 +653,7 @@
 				F0439B4C1CAA199100961268 /* NSFileManager+Yep.swift in Sources */,
 				F03370BE1CAC731D004209C5 /* PhotoInfo.swift in Sources */,
 				F0439B581CAA199100961268 /* UIImageView+Yep.swift in Sources */,
+				F03370C01CAC7607004209C5 /* CollectionViewWaterfallLayout.swift in Sources */,
 				F03370B11CAC6133004209C5 /* FeedsViewController.swift in Sources */,
 				F0439B521CAA199100961268 /* Results+Yep.swift in Sources */,
 				F06B86E11CAAEA800001149F /* YepSoundEffect.swift in Sources */,
@@ -674,14 +678,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F0439AFC1CAA15EF00961268 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0439AFD1CAA15EF00961268 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F0439B041CAA15EF00961268 /* intro.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
