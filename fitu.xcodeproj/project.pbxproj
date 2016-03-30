@@ -16,6 +16,12 @@
 		F03370A71CAC5673004209C5 /* ShowStepMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370A61CAC5673004209C5 /* ShowStepMatchViewController.swift */; };
 		F03370A91CAC5685004209C5 /* ShowStepMeetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370A81CAC5685004209C5 /* ShowStepMeetViewController.swift */; };
 		F03370AB1CAC56F5004209C5 /* ShowStepGeniusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370AA1CAC56F5004209C5 /* ShowStepGeniusViewController.swift */; };
+		F03370AD1CAC5FD8004209C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03370AC1CAC5FD8004209C5 /* Main.storyboard */; };
+		F03370AF1CAC6009004209C5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370AE1CAC6009004209C5 /* TabBarViewController.swift */; };
+		F03370B11CAC6133004209C5 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B01CAC6133004209C5 /* FeedsViewController.swift */; };
+		F03370B31CAC6179004209C5 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */; };
+		F03370B51CAC61A7004209C5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */; };
+		F03370B71CAC61AF004209C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B61CAC61AF004209C5 /* ProfileViewController.swift */; };
 		F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AF81CAA15EF00961268 /* AppDelegate.swift */; };
 		F0439AFB1CAA15EF00961268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AFA1CAA15EF00961268 /* ViewController.swift */; };
 		F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0439AFC1CAA15EF00961268 /* Main.storyboard */; };
@@ -99,6 +105,12 @@
 		F03370A61CAC5673004209C5 /* ShowStepMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStepMatchViewController.swift; sourceTree = "<group>"; };
 		F03370A81CAC5685004209C5 /* ShowStepMeetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStepMeetViewController.swift; sourceTree = "<group>"; };
 		F03370AA1CAC56F5004209C5 /* ShowStepGeniusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStepGeniusViewController.swift; sourceTree = "<group>"; };
+		F03370AC1CAC5FD8004209C5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F03370AE1CAC6009004209C5 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F03370B01CAC6133004209C5 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
+		F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		F03370B61CAC61AF004209C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F0439AF51CAA15EF00961268 /* fitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0439AF81CAA15EF00961268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0439AFA1CAA15EF00961268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +267,7 @@
 				F0439B021CAA15EF00961268 /* Assets.xcassets */,
 				F0439B041CAA15EF00961268 /* intro.storyboard */,
 				F03370A11CAC5465004209C5 /* show.storyboard */,
+				F03370AC1CAC5FD8004209C5 /* Main.storyboard */,
 				F0439B071CAA15EF00961268 /* Info.plist */,
 				F0439AFF1CAA15EF00961268 /* fitu.xcdatamodeld */,
 			);
@@ -339,6 +352,11 @@
 				F06B87031CAB374F0001149F /* registerEmail.swift */,
 				F033709F1CAC332A004209C5 /* loginViewController.swift */,
 				F06B86BE1CAAE9270001149F /* BaseViewController.swift */,
+				F03370AE1CAC6009004209C5 /* TabBarViewController.swift */,
+				F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */,
+				F03370B61CAC61AF004209C5 /* ProfileViewController.swift */,
+				F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */,
+				F03370B01CAC6133004209C5 /* FeedsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -480,6 +498,7 @@
 				F03370A21CAC5465004209C5 /* show.storyboard in Resources */,
 				F0439B061CAA15EF00961268 /* intro.storyboard in Resources */,
 				F0439B4B1CAA199100961268 /* NSDateTimeAgo.bundle in Resources */,
+				F03370AD1CAC5FD8004209C5 /* Main.storyboard in Resources */,
 				F0439B031CAA15EF00961268 /* Assets.xcassets in Resources */,
 				F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */,
 			);
@@ -548,6 +567,7 @@
 				F03370AB1CAC56F5004209C5 /* ShowStepGeniusViewController.swift in Sources */,
 				F06B86EA1CAAF68D0001149F /* OpenGraphInfoType.swift in Sources */,
 				F06B86D01CAAEA330001149F /* YepConfig.swift in Sources */,
+				F03370AF1CAC6009004209C5 /* TabBarViewController.swift in Sources */,
 				F0439B1D1CAA18E600961268 /* MessageTypeButton.swift in Sources */,
 				F06B86BF1CAAE9270001149F /* BaseViewController.swift in Sources */,
 				F0439B501CAA199100961268 /* NSURLRequest+cURL.swift in Sources */,
@@ -558,6 +578,7 @@
 				F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */,
 				F0439B491CAA199100961268 /* NSDate+Extension.swift in Sources */,
 				F03370A41CAC5577004209C5 /* ShowViewController.swift in Sources */,
+				F03370B31CAC6179004209C5 /* TakePhotoViewController.swift in Sources */,
 				F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */,
 				F0439B471CAA199100961268 /* Double+Yep.swift in Sources */,
 				F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */,
@@ -577,6 +598,7 @@
 				F0439B511CAA199100961268 /* PHImageRequestOptions+Yep.swift in Sources */,
 				F0439B421CAA199100961268 /* CGImage+Yep.swift in Sources */,
 				F0439B211CAA18E600961268 /* YepButton.swift in Sources */,
+				F03370B71CAC61AF004209C5 /* ProfileViewController.swift in Sources */,
 				F0439B4E1CAA199100961268 /* NSTimeZone+Yep.swift in Sources */,
 				F0439B411CAA199100961268 /* Array+Yep.swift in Sources */,
 				F0439B431CAA199100961268 /* CGRect+Yep.swift in Sources */,
@@ -597,11 +619,13 @@
 				F0439B591CAA199100961268 /* UIScrollView+Yep.swift in Sources */,
 				F0439B4C1CAA199100961268 /* NSFileManager+Yep.swift in Sources */,
 				F0439B581CAA199100961268 /* UIImageView+Yep.swift in Sources */,
+				F03370B11CAC6133004209C5 /* FeedsViewController.swift in Sources */,
 				F0439B521CAA199100961268 /* Results+Yep.swift in Sources */,
 				F06B86E11CAAEA800001149F /* YepSoundEffect.swift in Sources */,
 				F06B86E71CAAF2140001149F /* Models.swift in Sources */,
 				F06B86CC1CAAE9EC0001149F /* NavigationTitleLabel.swift in Sources */,
 				F0439B1B1CAA18E600961268 /* BorderButton.swift in Sources */,
+				F03370B51CAC61A7004209C5 /* DiscoverViewController.swift in Sources */,
 				F0439B1C1CAA18E600961268 /* EdgeBorderButton.swift in Sources */,
 				F06B86DC1CAAEA800001149F /* YepAsset.swift in Sources */,
 				F0439B441CAA199100961268 /* CGSize+Yep.swift in Sources */,
