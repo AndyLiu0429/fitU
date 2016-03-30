@@ -12,6 +12,10 @@
 		F033709E1CAC2DA9004209C5 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */; };
 		F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709F1CAC332A004209C5 /* loginViewController.swift */; };
 		F03370A21CAC5465004209C5 /* show.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03370A11CAC5465004209C5 /* show.storyboard */; };
+		F03370A41CAC5577004209C5 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370A31CAC5577004209C5 /* ShowViewController.swift */; };
+		F03370A71CAC5673004209C5 /* ShowStepMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370A61CAC5673004209C5 /* ShowStepMatchViewController.swift */; };
+		F03370A91CAC5685004209C5 /* ShowStepMeetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370A81CAC5685004209C5 /* ShowStepMeetViewController.swift */; };
+		F03370AB1CAC56F5004209C5 /* ShowStepGeniusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370AA1CAC56F5004209C5 /* ShowStepGeniusViewController.swift */; };
 		F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AF81CAA15EF00961268 /* AppDelegate.swift */; };
 		F0439AFB1CAA15EF00961268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AFA1CAA15EF00961268 /* ViewController.swift */; };
 		F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0439AFC1CAA15EF00961268 /* Main.storyboard */; };
@@ -71,7 +75,6 @@
 		F06B86E21CAAEA800001149F /* YepUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86DA1CAAEA800001149F /* YepUserDefaults.swift */; };
 		F06B86E71CAAF2140001149F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86E61CAAF2140001149F /* Models.swift */; };
 		F06B86EA1CAAF68D0001149F /* OpenGraphInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86E91CAAF68D0001149F /* OpenGraphInfoType.swift */; };
-		F06B86F71CAAF7810001149F /* FayeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86ED1CAAF7810001149F /* FayeService.swift */; };
 		F06B86F81CAAF7810001149F /* OpenGraphService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86EE1CAAF7810001149F /* OpenGraphService.swift */; };
 		F06B86F91CAAF7810001149F /* SocialWorkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86EF1CAAF7810001149F /* SocialWorkService.swift */; };
 		F06B86FA1CAAF7810001149F /* YepAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F01CAAF7810001149F /* YepAudioService.swift */; };
@@ -92,6 +95,10 @@
 		F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		F033709F1CAC332A004209C5 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		F03370A11CAC5465004209C5 /* show.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = show.storyboard; sourceTree = "<group>"; };
+		F03370A31CAC5577004209C5 /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		F03370A61CAC5673004209C5 /* ShowStepMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStepMatchViewController.swift; sourceTree = "<group>"; };
+		F03370A81CAC5685004209C5 /* ShowStepMeetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStepMeetViewController.swift; sourceTree = "<group>"; };
+		F03370AA1CAC56F5004209C5 /* ShowStepGeniusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStepGeniusViewController.swift; sourceTree = "<group>"; };
 		F0439AF51CAA15EF00961268 /* fitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0439AF81CAA15EF00961268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0439AFA1CAA15EF00961268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +160,6 @@
 		F06B86DA1CAAEA800001149F /* YepUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepUserDefaults.swift; sourceTree = "<group>"; };
 		F06B86E61CAAF2140001149F /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F06B86E91CAAF68D0001149F /* OpenGraphInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGraphInfoType.swift; sourceTree = "<group>"; };
-		F06B86ED1CAAF7810001149F /* FayeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FayeService.swift; sourceTree = "<group>"; };
 		F06B86EE1CAAF7810001149F /* OpenGraphService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGraphService.swift; sourceTree = "<group>"; };
 		F06B86EF1CAAF7810001149F /* SocialWorkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWorkService.swift; sourceTree = "<group>"; };
 		F06B86F01CAAF7810001149F /* YepAudioService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepAudioService.swift; sourceTree = "<group>"; };
@@ -201,6 +207,17 @@
 				F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */,
 			);
 			name = CameraPreview;
+			sourceTree = "<group>";
+		};
+		F03370A51CAC564B004209C5 /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				F03370A31CAC5577004209C5 /* ShowViewController.swift */,
+				F03370A81CAC5685004209C5 /* ShowStepMeetViewController.swift */,
+				F03370AA1CAC56F5004209C5 /* ShowStepGeniusViewController.swift */,
+				F03370A61CAC5673004209C5 /* ShowStepMatchViewController.swift */,
+			);
+			name = Show;
 			sourceTree = "<group>";
 		};
 		F0439AEC1CAA15EF00961268 = {
@@ -314,6 +331,7 @@
 		F06B86B91CAAE3F90001149F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F03370A51CAC564B004209C5 /* Show */,
 				F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */,
 				F06B86C01CAAE9600001149F /* SegueViewController.swift */,
 				F06B87011CAAF8CC0001149F /* registerPickGender.swift */,
@@ -386,7 +404,6 @@
 		F06B86EC1CAAF7660001149F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F06B86ED1CAAF7810001149F /* FayeService.swift */,
 				F06B86EE1CAAF7810001149F /* OpenGraphService.swift */,
 				F06B86EF1CAAF7810001149F /* SocialWorkService.swift */,
 				F06B86F01CAAF7810001149F /* YepAudioService.swift */,
@@ -528,6 +545,7 @@
 				F06B87021CAAF8CC0001149F /* registerPickGender.swift in Sources */,
 				F0439B5A1CAA199100961268 /* UITableView+Yep.swift in Sources */,
 				F0439AFB1CAA15EF00961268 /* ViewController.swift in Sources */,
+				F03370AB1CAC56F5004209C5 /* ShowStepGeniusViewController.swift in Sources */,
 				F06B86EA1CAAF68D0001149F /* OpenGraphInfoType.swift in Sources */,
 				F06B86D01CAAEA330001149F /* YepConfig.swift in Sources */,
 				F0439B1D1CAA18E600961268 /* MessageTypeButton.swift in Sources */,
@@ -535,15 +553,16 @@
 				F0439B501CAA199100961268 /* NSURLRequest+cURL.swift in Sources */,
 				F06B86FA1CAAF7810001149F /* YepAudioService.swift in Sources */,
 				F0439B4D1CAA199100961268 /* NSParagraphStyle+Yep.swift in Sources */,
+				F03370A91CAC5685004209C5 /* ShowStepMeetViewController.swift in Sources */,
 				F06B86DE1CAAEA800001149F /* YepHUD.swift in Sources */,
 				F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */,
 				F0439B491CAA199100961268 /* NSDate+Extension.swift in Sources */,
+				F03370A41CAC5577004209C5 /* ShowViewController.swift in Sources */,
 				F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */,
 				F0439B471CAA199100961268 /* Double+Yep.swift in Sources */,
 				F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */,
 				F06B86FB1CAAF7810001149F /* YepDownloader.swift in Sources */,
 				F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */,
-				F06B86F71CAAF7810001149F /* FayeService.swift in Sources */,
 				F0439B551CAA199100961268 /* UIColor+Yep.swift in Sources */,
 				F06B86DB1CAAEA800001149F /* YepAlert.swift in Sources */,
 				F06B86CB1CAAE9EC0001149F /* FPSLabel.swift in Sources */,
@@ -567,6 +586,7 @@
 				F033709E1CAC2DA9004209C5 /* CameraPreviewView.swift in Sources */,
 				F06B86E01CAAEA800001149F /* YepMedia.swift in Sources */,
 				F0439B541CAA199100961268 /* UICollectionView+Yep.swift in Sources */,
+				F03370A71CAC5673004209C5 /* ShowStepMatchViewController.swift in Sources */,
 				F06B87041CAB374F0001149F /* registerEmail.swift in Sources */,
 				F0439B4A1CAA199100961268 /* NSDate+Yep.swift in Sources */,
 				F0439B1F1CAA18E600961268 /* SkillCategoryButton.swift in Sources */,

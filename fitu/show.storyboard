@@ -91,12 +91,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FitU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRx-Wq-vkJ">
-                                <rect key="frame" x="126" y="458" width="123" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find the clothes best fit you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExN-8a-QFy">
                                 <rect key="frame" x="71" y="526" width="247.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -107,6 +101,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="458.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FitU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRx-Wq-vkJ">
+                                <rect key="frame" x="126" y="458" width="123" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -122,6 +122,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="companyLabel" destination="CRx-Wq-vkJ" id="xcc-6Z-b9G"/>
+                        <outlet property="companySlogan" destination="ExN-8a-QFy" id="cLN-OM-d74"/>
                         <outlet property="subTitleLabel" destination="ExN-8a-QFy" id="fgK-mI-6Fs"/>
                         <outlet property="subTitleLabelBottomConstraint" destination="jab-Tg-Seu" id="oeC-Ya-dOF"/>
                         <outlet property="titleLabel" destination="CRx-Wq-vkJ" id="2cz-DF-gAd"/>
@@ -167,6 +169,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="matchLogo" destination="q2B-Nx-QNF" id="XMe-W6-A4y"/>
+                        <outlet property="matchSlogan" destination="7AO-eC-NT3" id="eQa-1c-q8W"/>
                         <outlet property="subTitleLabel" destination="7AO-eC-NT3" id="8uY-Yx-5EI"/>
                         <outlet property="subTitleLabelBottomConstraint" destination="hME-M1-48V" id="OJq-VE-FYp"/>
                         <outlet property="titleLabel" destination="q2B-Nx-QNF" id="W0r-Zv-ugi"/>
@@ -212,6 +216,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="shareLogo" destination="EbL-hX-MJo" id="TeJ-YZ-Qsk"/>
+                        <outlet property="shareSlogan" destination="c5Q-3A-GBz" id="cFK-fH-pq9"/>
                         <outlet property="subTitleLabel" destination="c5Q-3A-GBz" id="cKe-FW-Fkv"/>
                         <outlet property="subTitleLabelBottomConstraint" destination="YhB-qy-76a" id="aqC-I7-9vv"/>
                         <outlet property="titleLabel" destination="EbL-hX-MJo" id="OWc-PW-t8I"/>
