@@ -147,15 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         
         println("Did Active")
-        
-        if !isFirstActive {
-            syncUnreadMessages() {}
-            
-        } else {
-            sync() // 确保该任务不是被 Remote Notification 激活 App 的时候执行
-            startFaye()
-        }
-        
+             
         application.applicationIconBadgeNumber = -1
         application.applicationIconBadgeNumber = 0
         
@@ -181,9 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         println("Fetch Back")
-        syncUnreadMessages() {
-            completionHandler(UIBackgroundFetchResult.NewData)
-        }
+        
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
@@ -283,21 +273,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
     }
     
-    func startFaye() {
-        
-        guard YepUserDefaults.isLogined else {
-            return
-        }
-        
-          }
     
-    func registerThirdPartyPushWithDeciveToken(deviceToken: NSData, pusherID: String) {
-        
-        //JPUSHService.registerDeviceToken(deviceToken)
-        //JPUSHService.setTags(Set(["iOS"]), alias: pusherID, callbackSelector:nil, object: nil)
-//        APService.registerDeviceToken(deviceToken)
-//        APService.setTags(Set(["iOS"]), alias: pusherID, callbackSelector:nil, object: nil)
-    }
     
     func tagsAliasCallback(iResCode: Int, tags: NSSet, alias: NSString) {
         
@@ -305,30 +281,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: Private
-    
-    private func tryReplyText(text: String, withUserInfo userInfo: [NSObject: AnyObject]) {
-        
-        guard let
-            recipientType = userInfo["recipient_type"] as? String,
-            recipientID = userInfo["recipient_id"] as? String else {
-                return
-        }
-        
-        println("try reply \"\(text)\" to [\(recipientType): \(recipientID)]")
-        
-       
-        
-    }
-    
-    private func syncUnreadMessages(furtherAction: () -> Void) {
-        
-        guard YepUserDefaults.isLogined else {
-            furtherAction()
-            return
-        }
-        
-       
-    }
     
     
     
