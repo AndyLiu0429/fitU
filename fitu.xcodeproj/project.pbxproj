@@ -49,7 +49,6 @@
 		F0439B5A1CAA199100961268 /* UITableView+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B3F1CAA199100961268 /* UITableView+Yep.swift */; };
 		F0439B5B1CAA199100961268 /* UIViewController+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B401CAA199100961268 /* UIViewController+Yep.swift */; };
 		F06B86BB1CAAE41D0001149F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */; };
-		F06B86BD1CAAE5CE0001149F /* RegisterPickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BC1CAAE5CE0001149F /* RegisterPickNameViewController.swift */; };
 		F06B86BF1CAAE9270001149F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BE1CAAE9270001149F /* BaseViewController.swift */; };
 		F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86C01CAAE9600001149F /* SegueViewController.swift */; };
 		F06B86C61CAAE9B90001149F /* BorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86C41CAAE9B90001149F /* BorderTextField.swift */; };
@@ -79,6 +78,7 @@
 		F06B86FF1CAAF7810001149F /* YepServiceSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F51CAAF7810001149F /* YepServiceSync.swift */; };
 		F06B87001CAAF7810001149F /* YepStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F61CAAF7810001149F /* YepStorageService.swift */; };
 		F06B87021CAAF8CC0001149F /* registerPickGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B87011CAAF8CC0001149F /* registerPickGender.swift */; };
+		F06B87041CAB374F0001149F /* registerEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B87031CAB374F0001149F /* registerEmail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,7 +128,6 @@
 		F0439B3F1CAA199100961268 /* UITableView+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Yep.swift"; sourceTree = "<group>"; };
 		F0439B401CAA199100961268 /* UIViewController+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Yep.swift"; sourceTree = "<group>"; };
 		F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		F06B86BC1CAAE5CE0001149F /* RegisterPickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPickNameViewController.swift; sourceTree = "<group>"; };
 		F06B86BE1CAAE9270001149F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F06B86C01CAAE9600001149F /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
 		F06B86C41CAAE9B90001149F /* BorderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderTextField.swift; sourceTree = "<group>"; };
@@ -158,6 +157,7 @@
 		F06B86F51CAAF7810001149F /* YepServiceSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepServiceSync.swift; sourceTree = "<group>"; };
 		F06B86F61CAAF7810001149F /* YepStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepStorageService.swift; sourceTree = "<group>"; };
 		F06B87011CAAF8CC0001149F /* registerPickGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerPickGender.swift; sourceTree = "<group>"; };
+		F06B87031CAB374F0001149F /* registerEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerEmail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,7 +301,7 @@
 				F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */,
 				F06B86C01CAAE9600001149F /* SegueViewController.swift */,
 				F06B87011CAAF8CC0001149F /* registerPickGender.swift */,
-				F06B86BC1CAAE5CE0001149F /* RegisterPickNameViewController.swift */,
+				F06B87031CAB374F0001149F /* registerEmail.swift */,
 				F06B86BE1CAAE9270001149F /* BaseViewController.swift */,
 			);
 			name = ViewControllers;
@@ -544,10 +544,10 @@
 				F0439B431CAA199100961268 /* CGRect+Yep.swift in Sources */,
 				F06B86C61CAAE9B90001149F /* BorderTextField.swift in Sources */,
 				F0439B011CAA15EF00961268 /* fitu.xcdatamodeld in Sources */,
-				F06B86BD1CAAE5CE0001149F /* RegisterPickNameViewController.swift in Sources */,
 				F06B86E21CAAEA800001149F /* YepUserDefaults.swift in Sources */,
 				F06B86E01CAAEA800001149F /* YepMedia.swift in Sources */,
 				F0439B541CAA199100961268 /* UICollectionView+Yep.swift in Sources */,
+				F06B87041CAB374F0001149F /* registerEmail.swift in Sources */,
 				F0439B4A1CAA199100961268 /* NSDate+Yep.swift in Sources */,
 				F0439B1F1CAA18E600961268 /* SkillCategoryButton.swift in Sources */,
 				F06B86FE1CAAF7810001149F /* YepService.swift in Sources */,

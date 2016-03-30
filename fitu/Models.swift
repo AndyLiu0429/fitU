@@ -45,6 +45,11 @@ class User: Object {
     dynamic var avatarURLString: String = ""
     dynamic var avatar: Avatar?
     dynamic var badge: String = ""
+    dynamic var email: String = ""
+
+    dynamic var height: Float = 0.0
+    dynamic var weight: Float = 0.0
+    dynamic var bodyShape: Int = 0
     
     override class func indexedProperties() -> [String] {
         return ["userID"]
@@ -61,18 +66,6 @@ class User: Object {
     
     var socialAccountProviders = List<UserSocialAccountProvider>()
     
-    var messages: [Message] {
-        return linkingObjects(Message.self, forProperty: "fromFriend")
-    }
-    
-    var ownedGroups: [Group] {
-        return linkingObjects(Group.self, forProperty: "owner")
-    }
-    
-    var belongsToGroups: [Group] {
-        return linkingObjects(Group.self, forProperty: "members")
-    }
-    
     var createdFeeds: [Feed] {
         return linkingObjects(Feed.self, forProperty: "creator")
     }
@@ -84,16 +77,6 @@ class User: Object {
         
         return false
     }
-    
-    var chatCellCompositedName: String {
-        if username.isEmpty {
-            return nickname
-        } else {
-            return "\(nickname) @\(username)"
-        }
-    }
-    
-    // 级联删除关联的数据对象
     
    }
 
@@ -522,7 +505,7 @@ class Feed: Object {
     dynamic var updatedUnixTime: NSTimeInterval = NSDate().timeIntervalSince1970
     
     dynamic var creator: User?
-    dynamic var distance: Double = 0
+    
     dynamic var messagesCount: Int = 0
     dynamic var body: String = ""
     
@@ -531,11 +514,6 @@ class Feed: Object {
     dynamic var socialWork: MessageSocialWork?
  
     dynamic var openGraphInfo: OpenGraphInfo?
-    
-    
-    dynamic var group: Group?
-    
-    dynamic var deleted: Bool = false // 已被管理员或建立者删除
     
     // 级联删除关联的数据对象
     
@@ -654,10 +632,6 @@ func userWithAvatarURLString(avatarURLString: String, inRealm realm: Realm) -> U
     return realm.objects(User).filter(predicate).first
 }
 
-func groupWithGroupID(groupID: String, inRealm realm: Realm) -> Group? {
-    let predicate = NSPredicate(format: "groupID = %@", groupID)
-    return realm.objects(Group).filter(predicate).first
-}
 
 func feedWithFeedID(feedID: String, inRealm realm: Realm) -> Feed? {
     let predicate = NSPredicate(format: "feedID = %@", feedID)
@@ -670,18 +644,6 @@ func feedWithFeedID(feedID: String, inRealm realm: Realm) -> Feed? {
     #endif
     
     return realm.objects(Feed).filter(predicate).first
-}
-
-func messageWithMessageID(messageID: String, inRealm realm: Realm) -> Message? {
-    if messageID.isEmpty {
-        return nil
-    }
-    
-    let predicate = NSPredicate(format: "messageID = %@", messageID)
-    
-    let messages = realm.objects(Message).filter(predicate)
-    
-    return messages.first
 }
 
 func avatarWithAvatarURLString(avatarURLString: String, inRealm realm: Realm) -> Avatar? {
@@ -720,40 +682,6 @@ func tryGetOrCreateMeInRealm(realm: Realm) -> User? {
     return nil
 }
 
-func mediaMetaDataFromString(metaDataString: String, inRealm realm: Realm) -> MediaMetaData? {
-    
-    if let data = metaDataString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-        let mediaMetaData = MediaMetaData()
-        mediaMetaData.data = data
-        
-        realm.add(mediaMetaData)
-        
-        return mediaMetaData
-    }
-    
-    return nil
-}
-
-func handleMessageDeletedFromServer(messageID messageID: String) {
-    
-    guard let
-        realm = try? Realm(),
-        message = messageWithMessageID(messageID, inRealm: realm)
-        else {
-            return
-    }
-    
-    let _ = try? realm.write {
-        message.updateForDeletedFromServerInRealm(realm)
-    }
-    
-    let messageIDs: [String] = [message.messageID]
-    
-    dispatch_async(dispatch_get_main_queue()) {
-        NSNotificationCenter.defaultCenter().postNotificationName(YepConfig.Notification.deletedMessages, object: ["messageIDs": messageIDs])
-    }
-}
-
 func blurredThumbnailImageOfMessage(message: Message) -> UIImage? {
     
     if let mediaMetaData = message.mediaMetaData {
@@ -768,52 +696,6 @@ func blurredThumbnailImageOfMessage(message: Message) -> UIImage? {
     
     return nil
 }
-
-func audioMetaOfMessage(message: Message) -> (duration: Double, samples: [CGFloat])? {
-    
-    if let mediaMetaData = message.mediaMetaData {
-        if let metaDataInfo = decodeJSON(mediaMetaData.data) {
-            if let
-                duration = metaDataInfo[YepConfig.MetaData.audioDuration] as? Double,
-                samples = metaDataInfo[YepConfig.MetaData.audioSamples] as? [CGFloat] {
-                return (duration, samples)
-            }
-        }
-    }
-    
-    return nil
-}
-
-func imageMetaOfMessage(message: Message) -> (width: CGFloat, height: CGFloat)? {
-    
-    if let mediaMetaData = message.mediaMetaData {
-        if let metaDataInfo = decodeJSON(mediaMetaData.data) {
-            if let
-                width = metaDataInfo[YepConfig.MetaData.imageWidth] as? CGFloat,
-                height = metaDataInfo[YepConfig.MetaData.imageHeight] as? CGFloat {
-                return (width, height)
-            }
-        }
-    }
-    
-    return nil
-}
-
-func videoMetaOfMessage(message: Message) -> (width: CGFloat, height: CGFloat)? {
-    
-    if let mediaMetaData = message.mediaMetaData {
-        if let metaDataInfo = decodeJSON(mediaMetaData.data) {
-            if let
-                width = metaDataInfo[YepConfig.MetaData.videoWidth] as? CGFloat,
-                height = metaDataInfo[YepConfig.MetaData.videoHeight] as? CGFloat {
-                return (width, height)
-            }
-        }
-    }
-    
-    return nil
-}
-
 // MARK: Update with info
 
 func updateUserWithUserID(userID: String, useUserInfo userInfo: JSONDictionary, inRealm realm: Realm) {
@@ -834,39 +716,24 @@ func updateUserWithUserID(userID: String, useUserInfo userInfo: JSONDictionary, 
             user.nickname = nickname
         }
         
+        if let height = userInfo["height"] as? Float {
+            user.height = height
+        }
+        
+        if let weight = userInfo["weight"] as? Float {
+            user.weight = weight
+        }
+        
+        if let bodyShape = userInfo["bodyShape"] as? Int {
+            user.bodyShape = bodyShape
+        }
+        
         if let introduction = userInfo["introduction"] as? String {
             user.introduction = introduction
         }
         
         if let avatarInfo = userInfo["avatar"] as? JSONDictionary, avatarURLString = avatarInfo["url"] as? String {
             user.avatarURLString = avatarURLString
-        }
-        
-        if let longitude = userInfo["longitude"] as? Double {
-            user.longitude = longitude
-        }
-        
-        if let latitude = userInfo["latitude"] as? Double {
-            user.latitude = latitude
-        }
-        
-        if let badge = userInfo["badge"] as? String {
-            user.badge = badge
-        }
-        
-           // 更新 Social Account Provider
-        
-        if let providersInfo = userInfo["providers"] as? [String: Bool] {
-            
-            user.socialAccountProviders.removeAll()
-            
-            for (name, enabled) in providersInfo {
-                let provider = UserSocialAccountProvider()
-                provider.name = name
-                provider.enabled = enabled
-                
-                user.socialAccountProviders.append(provider)
-            }
         }
     }
 }

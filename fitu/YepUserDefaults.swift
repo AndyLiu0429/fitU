@@ -11,22 +11,16 @@ import RealmSwift
 
 let v1AccessTokenKey = "v1AccessToken"
 let userIDKey = "userID"
-let nicknameKey = "nickname"
+let usernameKey = "username"
 let introductionKey = "introduction"
 let avatarURLStringKey = "avatarURLString"
 let badgeKey = "badge"
-let pusherIDKey = "pusherID"
-
-let areaCodeKey = "areaCode"
-let mobileKey = "mobile"
+let heightKey = "height"
+let weightKey = "weight"
+let bodyShapeKey = "bodyShape"
 
 let discoveredUserSortStyleKey = "discoveredUserSortStyle"
 let feedSortStyleKey = "feedSortStyle"
-
-let latitudeShiftKey = "latitudeShift"
-let longitudeShiftKey = "longitudeShift"
-
-let userLocationNameKey = "userLocationName"
 
 struct Listener<T>: Hashable {
     let name: String
@@ -109,33 +103,30 @@ class YepUserDefaults {
         
         v1AccessToken.removeAllListeners()
         userID.removeAllListeners()
-        nickname.removeAllListeners()
+        
+        username.removeAllListeners()
         introduction.removeAllListeners()
         avatarURLString.removeAllListeners()
         badge.removeAllListeners()
-        pusherID.removeAllListeners()
-        areaCode.removeAllListeners()
-        mobile.removeAllListeners()
+       
         discoveredUserSortStyle.removeAllListeners()
         feedSortStyle.removeAllListeners()
-        latitudeShift.removeAllListeners()
-        longitudeShift.removeAllListeners()
-        userLocationName.removeAllListeners()
+                height.removeAllListeners()
+        weight.removeAllListeners()
+        bodyShape.removeAllListeners()
         
         defaults.removeObjectForKey(v1AccessTokenKey)
         defaults.removeObjectForKey(userIDKey)
-        defaults.removeObjectForKey(nicknameKey)
+        defaults.removeObjectForKey(usernameKey)
         defaults.removeObjectForKey(introductionKey)
         defaults.removeObjectForKey(avatarURLStringKey)
         defaults.removeObjectForKey(badgeKey)
-        defaults.removeObjectForKey(pusherIDKey)
-        defaults.removeObjectForKey(areaCodeKey)
-        defaults.removeObjectForKey(mobileKey)
         defaults.removeObjectForKey(discoveredUserSortStyleKey)
         defaults.removeObjectForKey(feedSortStyleKey)
-        defaults.removeObjectForKey(latitudeShiftKey)
-        defaults.removeObjectForKey(longitudeShiftKey)
-        defaults.removeObjectForKey(userLocationNameKey)
+        
+        defaults.removeObjectForKey(heightKey)
+        defaults.removeObjectForKey(weightKey)
+        defaults.removeObjectForKey(bodyShapeKey)
         
         defaults.synchronize()
     }
@@ -165,14 +156,7 @@ class YepUserDefaults {
         return Listenable<String?>(v1AccessToken) { v1AccessToken in
             defaults.setObject(v1AccessToken, forKey: v1AccessTokenKey)
             
-            if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
-                // 注册或初次登录时同步数据的好时机
-                appDelegate.sync()
-                
-                // 也是注册或初次登录时启动 Faye 的好时机
-                appDelegate.startFaye()
             }
-        }
     }()
     
     static var userID: Listenable<String?> = {
@@ -183,22 +167,87 @@ class YepUserDefaults {
         }
     }()
     
-    static var nickname: Listenable<String?> = {
-        let nickname = defaults.stringForKey(nicknameKey)
+    static var height: Listenable<String?> = {
+        let height = defaults.stringForKey(heightKey)
         
-        return Listenable<String?>(nickname) { nickname in
-            defaults.setObject(nickname, forKey: nicknameKey)
+        return Listenable<String?>(height) {height in
+            defaults.setObject(height, forKey: heightKey)
             
             guard let realm = try? Realm() else {
                 return
             }
             
             if let
-                nickname = nickname,
+                height = height,
                 myUserID = YepUserDefaults.userID.value,
                 me = userWithUserID(myUserID, inRealm: realm) {
                 let _ = try? realm.write {
-                    me.nickname = nickname
+                    me.height = (height as NSString).floatValue
+                }
+            }
+            
+        }
+    }()
+    
+    static var weight: Listenable<String?> = {
+        let weight = defaults.stringForKey(weightKey)
+        
+        return Listenable<String?>(weight) {weight in
+            defaults.setObject(weight, forKey: weightKey)
+            
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            if let
+                weight = weight,
+                myUserID = YepUserDefaults.userID.value,
+                me = userWithUserID(myUserID, inRealm: realm) {
+                let _ = try? realm.write {
+                    me.weight = (weight as NSString).floatValue
+                }
+            }
+            
+        }
+    }()
+    
+    static var bodyShape: Listenable<String?> = {
+        let bodyShape = defaults.stringForKey(bodyShapeKey)
+        
+        return Listenable<String?>(bodyShape) {bodyShape in
+            defaults.setObject(bodyShape, forKey: bodyShapeKey)
+            
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            if let
+                bodyShape = bodyShape,
+                myUserID = YepUserDefaults.userID.value,
+                me = userWithUserID(myUserID, inRealm: realm) {
+                let _ = try? realm.write {
+                    me.bodyShape = Int(bodyShape)!            }
+            }
+            
+        }
+    }()
+    
+    static var username: Listenable<String?> = {
+        let username = defaults.stringForKey(usernameKey)
+        
+        return Listenable<String?>(username) { username in
+            defaults.setObject(username, forKey: usernameKey)
+            
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            if let
+                username = username,
+                myUserID = YepUserDefaults.userID.value,
+                me = userWithUserID(myUserID, inRealm: realm) {
+                let _ = try? realm.write {
+                    me.user = username
                 }
             }
         }
@@ -267,51 +316,6 @@ class YepUserDefaults {
         }
     }()
     
-    static var pusherID: Listenable<String?> = {
-        let pusherID = defaults.stringForKey(pusherIDKey)
-        
-        return Listenable<String?>(pusherID) { pusherID in
-            defaults.setObject(pusherID, forKey: pusherIDKey)
-            
-            // 注册推送的好时机
-            if let
-                pusherID = pusherID,
-                appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
-                if appDelegate.notRegisteredPush {
-                    appDelegate.notRegisteredPush = false
-                    
-                    if let deviceToken = appDelegate.deviceToken {
-                        appDelegate.registerThirdPartyPushWithDeciveToken(deviceToken, pusherID: pusherID)
-                    }
-                }
-            }
-        }
-    }()
-    
-    static var areaCode: Listenable<String?> = {
-        let areaCode = defaults.stringForKey(areaCodeKey)
-        
-        return Listenable<String?>(areaCode) { areaCode in
-            defaults.setObject(areaCode, forKey: areaCodeKey)
-        }
-    }()
-    
-    static var mobile: Listenable<String?> = {
-        let mobile = defaults.stringForKey(mobileKey)
-        
-        return Listenable<String?>(mobile) { mobile in
-            defaults.setObject(mobile, forKey: mobileKey)
-        }
-    }()
-    
-    static var fullPhoneNumber: String? {
-        if let areaCode = areaCode.value, mobile = mobile.value {
-            return "+" + areaCode + " " + mobile
-        }
-        
-        return nil
-    }
-    
     static var discoveredUserSortStyle: Listenable<String?> = {
         let discoveredUserSortStyle = defaults.stringForKey(discoveredUserSortStyleKey)
         
@@ -328,29 +332,6 @@ class YepUserDefaults {
         }
     }()
     
-    static var latitudeShift: Listenable<Double?> = {
-        let latitudeShift = defaults.doubleForKey(latitudeShiftKey)
-        
-        return Listenable<Double?>(latitudeShift) { latitudeShift in
-            defaults.setObject(latitudeShift, forKey: latitudeShiftKey)
-        }
-    }()
-    
-    static var longitudeShift: Listenable<Double?> = {
-        let longitudeShift = defaults.doubleForKey(longitudeShiftKey)
-        
-        return Listenable<Double?>(longitudeShift) { longitudeShift in
-            defaults.setObject(longitudeShift, forKey: longitudeShiftKey)
-        }
-    }()
-    
-    static var userLocationName: Listenable<String?> = {
-        let userLocationName = defaults.stringForKey(userLocationNameKey)
-        
-        return Listenable<String?>(userLocationName) { userLocationName in
-            defaults.setObject(userLocationName, forKey: userLocationNameKey)
-        }
-    }()
 }
 
 
