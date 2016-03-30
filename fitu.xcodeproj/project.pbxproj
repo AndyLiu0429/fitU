@@ -22,6 +22,7 @@
 		F03370B31CAC6179004209C5 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */; };
 		F03370B51CAC61A7004209C5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */; };
 		F03370B71CAC61AF004209C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B61CAC61AF004209C5 /* ProfileViewController.swift */; };
+		F03370BA1CAC6B7D004209C5 /* YepNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */; };
 		F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AF81CAA15EF00961268 /* AppDelegate.swift */; };
 		F0439AFB1CAA15EF00961268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439AFA1CAA15EF00961268 /* ViewController.swift */; };
 		F0439AFE1CAA15EF00961268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0439AFC1CAA15EF00961268 /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		F03370B61CAC61AF004209C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepNavigationController.swift; sourceTree = "<group>"; };
 		F0439AF51CAA15EF00961268 /* fitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0439AF81CAA15EF00961268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0439AFA1CAA15EF00961268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,14 @@
 			name = Show;
 			sourceTree = "<group>";
 		};
+		F03370B81CAC6B6A004209C5 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */,
+			);
+			name = Nav;
+			sourceTree = "<group>";
+		};
 		F0439AEC1CAA15EF00961268 = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +354,7 @@
 		F06B86B91CAAE3F90001149F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F03370B81CAC6B6A004209C5 /* Nav */,
 				F03370A51CAC564B004209C5 /* Show */,
 				F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */,
 				F06B86C01CAAE9600001149F /* SegueViewController.swift */,
@@ -623,6 +634,7 @@
 				F0439B521CAA199100961268 /* Results+Yep.swift in Sources */,
 				F06B86E11CAAEA800001149F /* YepSoundEffect.swift in Sources */,
 				F06B86E71CAAF2140001149F /* Models.swift in Sources */,
+				F03370BA1CAC6B7D004209C5 /* YepNavigationController.swift in Sources */,
 				F06B86CC1CAAE9EC0001149F /* NavigationTitleLabel.swift in Sources */,
 				F0439B1B1CAA18E600961268 /* BorderButton.swift in Sources */,
 				F03370B51CAC61A7004209C5 /* DiscoverViewController.swift in Sources */,
