@@ -45,7 +45,7 @@ class WelcomeViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func register(sender: UIButton) {
-        performSegueWithIdentifier("showRegisterPickName", sender: nil)
+        performSegueWithIdentifier("showRegisterPickEmail", sender: nil)
     }
     
     @IBAction private func login(sender: UIButton) {

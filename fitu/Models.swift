@@ -50,6 +50,7 @@ class User: Object {
     dynamic var height: Float = 0.0
     dynamic var weight: Float = 0.0
     dynamic var bodyShape: Int = 0
+    dynamic var gender: Int = 0
     
     override class func indexedProperties() -> [String] {
         return ["userID"]
@@ -57,9 +58,6 @@ class User: Object {
     
     dynamic var createdUnixTime: NSTimeInterval = NSDate().timeIntervalSince1970
     dynamic var lastSignInUnixTime: NSTimeInterval = NSDate().timeIntervalSince1970
-    
-    dynamic var longitude: Double = 0
-    dynamic var latitude: Double = 0
     
     dynamic var notificationEnabled: Bool = true
     dynamic var blocked: Bool = false

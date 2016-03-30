@@ -26,6 +26,7 @@ struct LoginUser: CustomStringConvertible {
     let height: Float
     let weight: Float
     let bodyShape: Int
+    let gender: Int
     let avatarURLString: String?
     
     var description: String {
@@ -83,7 +84,7 @@ func validateUsername(username: String, failureHandler: FailureHandler?, complet
     apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
 }
 
-func registerUsername(username: String, password: String, failureHandler: FailureHandler?, completion: Bool -> Void) {
+func registerUsername(username: String, password: String, height: String, weight: String, bodyShape: Int, gender: Int, failureHandler: FailureHandler?, completion: Bool -> Void) {
     
     let requestParameters = [
         "username": username,
@@ -108,7 +109,6 @@ func registerUsername(username: String, password: String, failureHandler: Failur
 }
 
 
-
 func verifyUsername(username: String, password: String, failureHandler: FailureHandler?, completion: LoginUser -> Void) {
     let requestParameters = [
         "username": username, "password": password]
@@ -124,9 +124,10 @@ func verifyUsername(username: String, password: String, failureHandler: FailureH
                         let height = user["height"] as! Float
                         let weight = user["weight"] as! Float
                         let bodyShape = user["bodyShape"] as! Int
+                        let gender = user["gender"] as! Int
                         let avatarURLString = user["avatar_url"] as? String
                         
-                        return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, avatarURLString: avatarURLString)
+                        return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape,gender: gender,avatarURLString: avatarURLString)
                 }
             }
         }
@@ -802,8 +803,7 @@ struct DiscoveredFeed: Hashable {
             return nil
         }
 
-        let distance = feedInfo["distance"] as? Double
-
+        
         var attachment: DiscoveredFeed.Attachment?
 
         switch kind {

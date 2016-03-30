@@ -18,9 +18,22 @@ let badgeKey = "badge"
 let heightKey = "height"
 let weightKey = "weight"
 let bodyShapeKey = "bodyShape"
+let genderKey = "gender"
 
 let discoveredUserSortStyleKey = "discoveredUserSortStyle"
 let feedSortStyleKey = "feedSortStyle"
+
+
+enum Gender:Int {
+    case Male = 0
+    case Female
+}
+
+enum BodyShape:Int {
+    case slim = 0
+    case normal
+    case overweight
+}
 
 struct Listener<T>: Hashable {
     let name: String
@@ -114,6 +127,7 @@ class YepUserDefaults {
                 height.removeAllListeners()
         weight.removeAllListeners()
         bodyShape.removeAllListeners()
+        gender.removeAllListeners()
         
         defaults.removeObjectForKey(v1AccessTokenKey)
         defaults.removeObjectForKey(userIDKey)
@@ -127,6 +141,7 @@ class YepUserDefaults {
         defaults.removeObjectForKey(heightKey)
         defaults.removeObjectForKey(weightKey)
         defaults.removeObjectForKey(bodyShapeKey)
+        defaults.removeObjectForKey(genderKey)
         
         defaults.synchronize()
     }
@@ -232,6 +247,29 @@ class YepUserDefaults {
         }
     }()
     
+    static var gender: Listenable<String?> = {
+        let gender = defaults.stringForKey(genderKey)
+        
+        return Listenable<String?>(gender) {bodyShape in
+            defaults.setObject(gender, forKey: genderKey)
+            
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            if let
+                gender = gender,
+                myUserID = YepUserDefaults.userID.value,
+                me = userWithUserID(myUserID, inRealm: realm) {
+                let _ = try? realm.write {
+                    me.gender = Int(gender)!            }
+            }
+            
+        }
+    }()
+
+    
+    
     static var username: Listenable<String?> = {
         let username = defaults.stringForKey(usernameKey)
         
@@ -247,7 +285,7 @@ class YepUserDefaults {
                 myUserID = YepUserDefaults.userID.value,
                 me = userWithUserID(myUserID, inRealm: realm) {
                 let _ = try? realm.write {
-                    me.user = username
+                    me.username = username
                 }
             }
         }
