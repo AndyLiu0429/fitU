@@ -76,6 +76,47 @@
                     <view key="view" contentMode="scaleToFill" id="adB-5Q-BNW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dH-cb-6vW" userLabel="Cemera Roll Button">
+                                <rect key="frame" x="146" y="537.5" width="60" height="62.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="13" maxX="10" maxY="13"/>
+                                <state key="normal" image="button_camera_roll">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhg-HC-EfV" userLabel="Capture Button">
+                                <rect key="frame" x="275" y="482" width="50" height="76"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="13"/>
+                                <state key="normal" image="button_capture">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E91-QD-acI" userLabel="Cemera Roll Button">
+                                <rect key="frame" x="152" y="488" width="60" height="62.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="13" maxX="10" maxY="13"/>
+                                <state key="normal" image="button_camera_roll">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQT-ve-DUn" userLabel="Retake Button">
+                                <rect key="frame" x="396" y="499" width="71" height="44"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="13" maxX="10" maxY="13"/>
+                                <state key="normal" title="Retake">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yC6-DQ-nt4" userLabel="Camera Preview View" customClass="CameraPreviewView" customModule="fitu" customModuleProvider="target">
+                                <rect key="frame" x="220" y="139" width="160" height="160"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Take Photo" id="QRU-1G-Oe6"/>
@@ -143,6 +184,7 @@
         <!--Photo-->
         <scene sceneID="RXx-Nw-Fyq">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIc-FU-Nlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3NH-Up-jk7" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Photo" id="8lk-xf-iBS"/>
                     <toolbarItems/>
@@ -155,7 +197,6 @@
                         <segue destination="k1D-4U-Dtz" kind="relationship" relationship="rootViewController" id="SPQ-gF-sr6"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KIc-FU-Nlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-92" y="842"/>
         </scene>
@@ -198,4 +239,8 @@
             <point key="canvasLocation" x="-1571" y="1401"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_camera_roll" width="50" height="50"/>
+        <image name="button_capture" width="50" height="50"/>
+    </resources>
 </document>
