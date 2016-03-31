@@ -17,7 +17,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Fpk-PE-zyy" kind="relationship" relationship="viewControllers" id="sYx-sz-c8k"/>
+                        <segue destination="vX8-Ij-d0u" kind="relationship" relationship="viewControllers" id="sYx-sz-c8k"/>
                         <segue destination="k1D-4U-Dtz" kind="relationship" relationship="viewControllers" id="59a-MY-Gke"/>
                         <segue destination="Tmy-h6-Kbf" kind="relationship" relationship="viewControllers" id="xpl-po-JfQ"/>
                         <segue destination="ed1-Ya-XPH" kind="relationship" relationship="viewControllers" id="cwr-jr-pTy"/>
@@ -96,7 +96,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="me6-Ls-5Fi" customClass="DiscoverPhotoCollectionView">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="me6-Ls-5Fi" customClass="DiscoverPhotoCollectionView">
                                 <rect key="frame" x="20" y="20" width="560" height="531"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="knk-7k-yAM">
                                     <size key="itemSize" width="50" height="50"/>
@@ -115,9 +115,28 @@
                             <constraint firstItem="me6-Ls-5Fi" firstAttribute="top" secondItem="R2O-Ir-xNB" secondAttribute="bottom" id="uXU-Fd-KNW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Discover" id="cC6-qE-753"/>
+                    <navigationItem key="navigationItem" title="Discover" id="8Mi-mH-gb8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnG-UT-T3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1230" y="171"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="Fec-CV-0Ho">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vX8-Ij-d0u" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" id="cC6-qE-753"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h0W-BT-u2K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fpk-PE-zyy" kind="relationship" relationship="rootViewController" id="Bdy-Fx-TPY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lrg-Pr-Sro" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2042" y="171"/>
         </scene>

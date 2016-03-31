@@ -14,10 +14,20 @@ class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDele
     
     var photoCollectionCellIdentifier = "PhotoCell"
     
+    let refreshControl = UIRefreshControl()
+    var populatingPhotos = false
+    var nextURLRequest: NSURLRequest?
+    let BaseRequest  = "http://haha/photos/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setUpView()
+    }
+    
+    private func setUpView() {
         let layout = CollectionViewWaterfallLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.headerInset = UIEdgeInsetsMake(20, 0, 0, 0)
@@ -28,6 +38,10 @@ class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDele
         
         collectionView.collectionViewLayout = layout
         collectionView!.registerClass(PhotoCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: photoCollectionCellIdentifier)
+        
+        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: .ValueChanged)
+        collectionView!.addSubview(refreshControl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,28 +82,84 @@ class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDele
 
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        var reusableView: UICollectionReusableView? = nil
-        
-        if kind == CollectionViewWaterfallElementKindSectionHeader {
-            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath)
-            
-            if let view = reusableView {
-                view.backgroundColor = UIColor.redColor()
-            }
-        }
-        else if kind == CollectionViewWaterfallElementKindSectionFooter {
-            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath)
-            if let view = reusableView {
-                view.backgroundColor = UIColor.blueColor()
-            }
-        }
-        
-        return reusableView!
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let photoInfo = photos[indexPath.row]
+        performSegueWithIdentifier("showPhoto", sender: ["photoInfo": photoInfo])
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return photos[indexPath.item].photoSize
+    }
+
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        if (self.nextURLRequest != nil && scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8) {
+            populatePhotos(self.nextURLRequest!)
+        }
+    }
+    
+    func populatePhotos(request: URLRequestConvertible) {
+        
+        if populatingPhotos {
+            return
+        }
+        
+        populatingPhotos = true
+        
+        Alamofire.request(request).responseJSON() {
+            (_ , _, result) in
+            defer {
+                self.populatingPhotos = false
+            }
+            switch result {
+            case .Success(let jsonObject):
+                //debugPrint(jsonObject)
+                let json = JSON(jsonObject)
+                
+                if (json["meta"]["code"].intValue  == 200) {
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                        if let urlString = json["pagination"]["next_url"].URL {
+                            self.nextURLRequest = NSURLRequest(URL: urlString)
+                        } else {
+                            self.nextURLRequest = nil
+                        }
+                        let photoInfos = json["data"].arrayValue
+                            
+                            .filter {
+                                $0["type"].stringValue == "image"
+                            }.map({
+                                PhotoInfo(sourceImageURL: $0["images"]["standard_resolution"]["url"].URL!)
+                            })
+                        
+                        let lastItem = self.photos.count
+                        self.photos.appendContentsOf(photoInfos)
+                        
+                        let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                        }
+                        
+                    }
+                    
+                }
+            case .Failure:
+                break;
+            }
+            
+        }
+    }
+    
+    func handleRefresh() {
+        nextURLRequest = nil
+        refreshControl.beginRefreshing()
+        self.photos.removeAll(keepCapacity: false)
+        self.collectionView!.reloadData()
+        refreshControl.endRefreshing()
+        
+        populatePhotos(BaseRequest)
+        
     }
 
 
