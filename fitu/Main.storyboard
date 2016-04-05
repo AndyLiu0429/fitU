@@ -184,7 +184,6 @@
         <!--Photo-->
         <scene sceneID="RXx-Nw-Fyq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KIc-FU-Nlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3NH-Up-jk7" customClass="YepNavigationController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Photo" id="8lk-xf-iBS"/>
                     <toolbarItems/>
@@ -197,6 +196,7 @@
                         <segue destination="k1D-4U-Dtz" kind="relationship" relationship="rootViewController" id="SPQ-gF-sr6"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIc-FU-Nlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-92" y="842"/>
         </scene>
