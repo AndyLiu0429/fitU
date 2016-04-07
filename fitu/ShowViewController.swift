@@ -14,9 +14,10 @@ class ShowViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     
     @IBOutlet private weak var pageControl: UIPageControl!
+
+    @IBOutlet weak var registerButton: UIButton!
     
-    @IBOutlet private weak var registerButton: UIButton!
-    @IBOutlet private weak var loginButton: EdgeBorderButton!
+    @IBOutlet weak var loginButton: EdgeBorderButton!
     
     private var isFirstAppear = true
     
@@ -31,7 +32,7 @@ class ShowViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        //navigationController?.setNavigationBarHidden(true, animated: true)
         
         if isFirstAppear {
             scrollView.alpha = 0
@@ -129,17 +130,19 @@ class ShowViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func register(sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("registerEmail") as! registerEmail
+        let storyboard = UIStoryboard(name: "intro", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("registerEmailController") as! registerEmail
         
         navigationController?.pushViewController(vc, animated: true)
+        //self.presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction private func login(sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+        let storyboard = UIStoryboard(name: "intro", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginViewController") as! loginViewController
         
         navigationController?.pushViewController(vc, animated: true)
+        //self.presentViewController(vc, animated: true, completion: nil)
     }
 }
 

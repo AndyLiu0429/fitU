@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -11,7 +10,6 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="Ha4-ol-D2e" customClass="TabBarController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DdC-xv-l7V">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -44,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g94-9C-Etg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2323" y="1048"/>
+            <point key="canvasLocation" x="-2503" y="1516"/>
         </scene>
         <!--Feeds-->
         <scene sceneID="eh1-7K-0zU">
@@ -94,6 +92,9 @@
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="captureOrFinish:" destination="k1D-4U-Dtz" eventType="touchUpInside" id="O2p-oT-XNr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E91-QD-acI" userLabel="Cemera Roll Button">
                                 <rect key="frame" x="152" y="488" width="60" height="62.5"/>
@@ -114,53 +115,66 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yC6-DQ-nt4" userLabel="Camera Preview View" customClass="CameraPreviewView" customModule="fitu" customModuleProvider="target">
-                                <rect key="frame" x="220" y="139" width="160" height="160"/>
+                                <rect key="frame" x="134" y="72" width="342" height="367"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RF3-Uz-Rhc">
+                                        <rect key="frame" x="-12" y="8" width="366" height="377"/>
+                                    </imageView>
+                                </subviews>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWH-PC-hHg" userLabel="Open Camera Button" customClass="BorderButton" customModule="fitu" customModuleProvider="target">
+                                <rect key="frame" x="200" y="447" width="200" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="P3k-Ri-4gG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="13"/>
+                                <state key="normal" title="Open Camera">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryOpenCamera:" destination="k1D-4U-Dtz" eventType="touchUpInside" id="AiV-7v-hbH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JWH-PC-hHg" firstAttribute="centerX" secondItem="adB-5Q-BNW" secondAttribute="centerX" id="kA2-BP-tOR"/>
+                            <constraint firstItem="IK9-oa-oIb" firstAttribute="top" secondItem="JWH-PC-hHg" secondAttribute="bottom" constant="60" id="lbj-zw-xn9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Take Photo" id="QRU-1G-Oe6"/>
+                    <connections>
+                        <outlet property="cameraPreviewView" destination="yC6-DQ-nt4" id="5q0-ft-1dz"/>
+                        <outlet property="cameraRollButton" destination="E91-QD-acI" id="ehd-ir-gvu"/>
+                        <outlet property="captureButton" destination="rhg-HC-EfV" id="m2v-hB-k6w"/>
+                        <outlet property="fitsImageView" destination="RF3-Uz-Rhc" id="qzl-hy-yne"/>
+                        <outlet property="openCameraButton" destination="JWH-PC-hHg" id="WoW-EU-OO1"/>
+                        <outlet property="retakeButton" destination="ZQT-ve-DUn" id="LyO-zd-rhc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBj-nW-Kfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="842"/>
         </scene>
-        <!--Discover-->
-        <scene sceneID="Coc-Em-ADg">
+        <!--Photo Viewer View Controller-->
+        <scene sceneID="rQ2-LL-X1k">
             <objects>
-                <viewController id="Fpk-PE-zyy" sceneMemberID="viewController">
+                <viewController id="Kuz-hx-H0C" customClass="PhotoViewerViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R2O-Ir-xNB"/>
-                        <viewControllerLayoutGuide type="bottom" id="s3A-Bj-xQb"/>
+                        <viewControllerLayoutGuide type="top" id="brl-D9-4ex"/>
+                        <viewControllerLayoutGuide type="bottom" id="wqZ-47-h9W"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="URk-hN-J1w">
+                    <view key="view" contentMode="scaleToFill" id="adk-Uf-VUV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="me6-Ls-5Fi" customClass="DiscoverPhotoCollectionView">
-                                <rect key="frame" x="20" y="20" width="560" height="531"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="knk-7k-yAM">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="s3A-Bj-xQb" firstAttribute="top" secondItem="me6-Ls-5Fi" secondAttribute="bottom" id="5VG-E0-EVE"/>
-                            <constraint firstItem="me6-Ls-5Fi" firstAttribute="leading" secondItem="URk-hN-J1w" secondAttribute="leadingMargin" id="HGf-ML-snF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="me6-Ls-5Fi" secondAttribute="trailing" id="tRe-ua-NeO"/>
-                            <constraint firstItem="me6-Ls-5Fi" firstAttribute="top" secondItem="R2O-Ir-xNB" secondAttribute="bottom" id="uXU-Fd-KNW"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Discover" id="8Mi-mH-gb8"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TnG-UT-T3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zx3-Sa-Kj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1230" y="171"/>
+            <point key="canvasLocation" x="-518" y="192"/>
         </scene>
         <!--Discover-->
         <scene sceneID="Fec-CV-0Ho">
@@ -174,12 +188,39 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Fpk-PE-zyy" kind="relationship" relationship="rootViewController" id="Bdy-Fx-TPY"/>
+                        <segue destination="KxG-O0-XqB" kind="show" id="JFy-ym-wde"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lrg-Pr-Sro" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2042" y="171"/>
+        </scene>
+        <!--Discover View Controller-->
+        <scene sceneID="cl9-bz-wYG">
+            <objects>
+                <collectionViewController id="KxG-O0-XqB" customClass="DiscoverViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dzb-OU-z3k">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rhq-xD-zgY">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="KxG-O0-XqB" id="bJF-vo-SlD"/>
+                            <outlet property="delegate" destination="KxG-O0-XqB" id="qtN-Xy-hGr"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <segue destination="Kuz-hx-H0C" kind="show" identifier="show photo" id="e7a-3S-YSb"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="unh-Jb-89Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1191" y="187"/>
         </scene>
         <!--Photo-->
         <scene sceneID="RXx-Nw-Fyq">
@@ -217,7 +258,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEX-7L-TKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3135" y="1048"/>
+            <point key="canvasLocation" x="-3230" y="1476"/>
         </scene>
         <!--Feeds-->
         <scene sceneID="ejF-HJ-EOt">

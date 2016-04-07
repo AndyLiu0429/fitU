@@ -93,7 +93,7 @@ struct OpenGraph {
     var appleEBook: AppleEBook?
 
     init(URL: NSURL) {
-        self.URL = URL.yep_appleAllianceURL
+        self.URL = URL
     }
 
     static func fromHTMLString(HTMLString: String, forURL URL: NSURL) -> OpenGraph? {

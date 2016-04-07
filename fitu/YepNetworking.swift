@@ -116,12 +116,8 @@ let _sessionDelegate = SessionDelegate()
 #endif
 
 public func apiRequest<A>(modifyRequest: NSMutableURLRequest -> (), baseURL: NSURL, resource: Resource<A>, failure: FailureHandler?, completion: A -> Void) {
-#if STAGING
-    let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-    let session = NSURLSession(configuration: sessionConfig, delegate: _sessionDelegate, delegateQueue: nil)
-#else
+
     let session = NSURLSession.sharedSession()
-#endif
 
     let url = baseURL.URLByAppendingPathComponent(resource.path)
     let request = NSMutableURLRequest(URL: url)
@@ -173,9 +169,9 @@ public func apiRequest<A>(modifyRequest: NSMutableURLRequest -> (), baseURL: NSU
         request.setValue(value, forHTTPHeaderField: key)
     }
 
-    #if DEBUG
-    //println(request.cURLCommandLineWithSession(session))
-    #endif
+
+    print(request.cURLCommandLineWithSession(session))
+
 
     let _failure: FailureHandler
 
@@ -222,7 +218,7 @@ public func apiRequest<A>(modifyRequest: NSMutableURLRequest -> (), baseURL: NSU
                 if httpResponse.statusCode == 401 {
 
                     // 确保是自家服务
-                    if let requestHost = request.URL?.host where requestHost == yepBaseURL.host {
+                    if let requestHost = request.URL?.host where requestHost == BaseURL.host {
                         dispatch_async(dispatch_get_main_queue()) {
                             YepUserDefaults.userNeedRelogin()
                         }
@@ -235,18 +231,11 @@ public func apiRequest<A>(modifyRequest: NSMutableURLRequest -> (), baseURL: NSU
             println("\(resource)")
             println(request.cURLCommandLine)
         }
-
-        dispatch_async(dispatch_get_main_queue()) {
-            yepNetworkActivityCount--
-        }
     }
 
     task.resume()
 
-    dispatch_async(dispatch_get_main_queue()) {
-        yepNetworkActivityCount++
     }
-}
 
 func errorMessageInData(data: NSData?) -> String? {
     if let data = data {

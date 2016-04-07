@@ -14,7 +14,7 @@ import Alamofire
 #if STAGING
 let BaseURL = NSURL(string: "https://park-staging.catchchatchina.com/api")!
 #else
-let BaseURL = NSURL(string: "")!
+let BaseURL = NSURL(string: "http://10.128.8.130:8000")!
 #endif
 
 // Models
@@ -83,16 +83,21 @@ func validateUsername(username: String, failureHandler: FailureHandler?, complet
         
     }
     
-    let resource = jsonResource(path: "/v1/users/username_validate", method: .GET, requestParameters: requestParameters, parse: parse)
+    let resource = jsonResource(path: "/users/check-duplicate", method: .GET, requestParameters: requestParameters, parse: parse)
 
     apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
 }
 
-func registerUsername(username: String, password: String, height: String, weight: String, bodyShape: Int, gender: Int, failureHandler: FailureHandler?, completion: Bool -> Void) {
+func registerUsername(username: String, password: String, height: String, weight: String, bodyShape: String, gender: String, failureHandler: FailureHandler?, completion: Bool -> Void) {
     
     let requestParameters = [
         "username": username,
-        "password": password ]
+        "password": password,
+        "height": height,
+        "weight": weight,
+        "gender": gender,
+        "bodyShape": bodyShape
+        ]
     
     let parse: JSONDictionary -> Bool? = { data in
         println("data: \(data)")
@@ -105,8 +110,9 @@ func registerUsername(username: String, password: String, height: String, weight
         
         return false
     }
+    //print("here")
     
-    let resource = jsonResource(path: "/v1/register/create", method: .POST, requestParameters: requestParameters, parse: parse)
+    let resource = jsonResource(path: "users/", method: .POST, requestParameters: requestParameters, parse: parse)
     
     apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
     
@@ -199,37 +205,39 @@ func updateMyselfWithInfo(info: JSONDictionary, failureHandler: FailureHandler?,
     apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
 }
 
-func updateAvatarWithImageData(imageData: NSData, failureHandler: FailureHandler?, completion: String -> Void) {
+func updateAvatarWithImageData(username: String, imageData: NSData, failureHandler: FailureHandler?, completion: String -> Void) {
 
-    guard let token = YepUserDefaults.v1AccessToken.value else {
-        println("updateAvatarWithImageData no token")
-        return
-    }
+//    guard let token = YepUserDefaults.v1AccessToken.value else {
+//        println("updateAvatarWithImageData no token")
+//        return
+//    }
 
     let parameters: [String: String] = [
-        "Authorization": "Token token=\"\(token)\"",
+               "Content-Type": "multipart/form-data"
     ]
 
     let filename = "avatar.jpg"
-
-    Alamofire.upload(.PATCH, BaseURL.absoluteString + "/v1/user/set_avatar", headers: parameters, multipartFormData: { multipartFormData in
+    
+    Alamofire.upload(.POST, BaseURL.absoluteString + "/avatars/", headers: parameters, multipartFormData: { multipartFormData in
 
         multipartFormData.appendBodyPart(data: imageData, name: "avatar", fileName: filename, mimeType: "image/jpeg")
+        multipartFormData.appendBodyPart(data: username.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name: "username")
 
     }, encodingCompletion: { encodingResult in
-        //println("encodingResult: \(encodingResult)")
+        println("encodingResult: \(encodingResult)")
 
         switch encodingResult {
 
         case .Success(let upload, _, _):
+            
+            
 
             upload.responseJSON(completionHandler: { response in
 
                 guard let
                     data = response.data,
                     json = decodeJSON(data),
-                    avatarInfo = json["avatar"] as? JSONDictionary,
-                    avatarURLString = avatarInfo["url"] as? String
+                    avatarURLString = json["avatarUrl"] as? String
                 else {
                     failureHandler?(reason: .CouldNotParseJSON, errorMessage: nil)
                     return
@@ -243,6 +251,7 @@ func updateAvatarWithImageData(imageData: NSData, failureHandler: FailureHandler
             failureHandler?(reason: .Other(nil), errorMessage: "\(encodingError)")
         }
     })
+    
 }
 
 func loginByUsername(username: String, password: String, failureHandler: FailureHandler?, completion: LoginUser -> Void) {
@@ -466,10 +475,10 @@ struct DiscoveredUser: Hashable {
         return false
     }
     
-    static func fromUser(user: User) -> DiscoveredUser {
-        
-        return DiscoveredUser(id: user.userID, username: user.username, introduction: user.introduction, avatarURLString: user.avatarURLString, badge: user.badge, createdUnixTime: user.createdUnixTime, lastSignInUnixTime: user.lastSignInUnixTime, socialAccountProviders: [], recently_updated_provider: nil)
-    }
+//    static func fromUser(user: User) -> DiscoveredUser {
+//        
+//        return DiscoveredUser(id: user.userID, username: user.username, introduction: user.introduction, avatarURLString: user.avatarURLString, badge: user.badge, createdUnixTime: user.createdUnixTime, lastSignInUnixTime: user.lastSignInUnixTime, socialAccountProviders: [], recently_updated_provider: nil)
+//    }
 }
 
 func ==(lhs: DiscoveredUser, rhs: DiscoveredUser) -> Bool {
@@ -895,42 +904,42 @@ let parseFeeds: JSONDictionary -> [DiscoveredFeed]? = { data in
     return []
 }
 
-func discoverFeedsWithSortStyle(sortStyle: FeedSortStyle, pageIndex: Int, perPage: Int, maxFeedID: String?, failureHandler: ((Reason, String?) -> Void)?, completion: [DiscoveredFeed] -> Void) {
-
-    var requestParameters: JSONDictionary = [
-        "sort": sortStyle.rawValue,
-        "page": pageIndex,
-        "per_page": perPage,
-    ]
-
-   
-    if let maxFeedID = maxFeedID {
-        requestParameters["max_id"] = maxFeedID
-    }
-
-    let parse: JSONDictionary -> [DiscoveredFeed]? = { data in
-
-        // 只离线第一页，且无 skill
-        if pageIndex == 1 {
-            if let realm = try? Realm() {
-                if let offlineData = try? NSJSONSerialization.dataWithJSONObject(data, options: []) {
-
-                    let offlineJSON = OfflineJSON(name: OfflineJSONName.Feeds.rawValue, data: offlineData)
-
-                    let _ = try? realm.write {
-                        realm.add(offlineJSON, update: true)
-                    }
-                }
-            }
-        }
-
-        return parseFeeds(data)
-    }
-
-    let resource = authJsonResource(path: "/v1/topics/discover", method: .GET, requestParameters: requestParameters, parse: parse)
-
-    apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
-}
+//func discoverFeedsWithSortStyle(sortStyle: FeedSortStyle, pageIndex: Int, perPage: Int, maxFeedID: String?, failureHandler: ((Reason, String?) -> Void)?, completion: [DiscoveredFeed] -> Void) {
+//
+//    var requestParameters: JSONDictionary = [
+//        "sort": sortStyle.rawValue,
+//        "page": pageIndex,
+//        "per_page": perPage,
+//    ]
+//
+//   
+//    if let maxFeedID = maxFeedID {
+//        requestParameters["max_id"] = maxFeedID
+//    }
+//
+//    let parse: JSONDictionary -> [DiscoveredFeed]? = { data in
+//
+//        // 只离线第一页，且无 skill
+//        if pageIndex == 1 {
+//            if let realm = try? Realm() {
+//                if let offlineData = try? NSJSONSerialization.dataWithJSONObject(data, options: []) {
+//
+//                    let offlineJSON = OfflineJSON(name: OfflineJSONName.Feeds.rawValue, data: offlineData)
+//
+//                    let _ = try? realm.write {
+//                        realm.add(offlineJSON, update: true)
+//                    }
+//                }
+//            }
+//        }
+//
+//        return parseFeeds(data)
+//    }
+//
+//    let resource = authJsonResource(path: "/v1/topics/discover", method: .GET, requestParameters: requestParameters, parse: parse)
+//
+//    apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
+//}
 
 func feedWithSharedToken(token: String, failureHandler: FailureHandler?, completion: DiscoveredFeed -> Void) {
 

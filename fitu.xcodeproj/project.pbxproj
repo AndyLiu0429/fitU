@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C652B7C6B4B159A3AA47B32 /* Pods_fitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECDD3ED2C75B0B8E259F1C2 /* Pods_fitu.framework */; };
+		F011DD491CB5DBF700BB0627 /* YepTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD481CB5DBF700BB0627 /* YepTabBar.swift */; };
+		F011DD4B1CB5E16200BB0627 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */; };
 		F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */; };
 		F033709E1CAC2DA9004209C5 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */; };
 		F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709F1CAC332A004209C5 /* loginViewController.swift */; };
@@ -43,7 +45,6 @@
 		F0439B421CAA199100961268 /* CGImage+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B271CAA199100961268 /* CGImage+Yep.swift */; };
 		F0439B431CAA199100961268 /* CGRect+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B281CAA199100961268 /* CGRect+Yep.swift */; };
 		F0439B441CAA199100961268 /* CGSize+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B291CAA199100961268 /* CGSize+Yep.swift */; };
-		F0439B451CAA199100961268 /* CLLocationCoordinate2D+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B2A1CAA199100961268 /* CLLocationCoordinate2D+Yep.swift */; };
 		F0439B461CAA199100961268 /* CLPlacemark+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B2B1CAA199100961268 /* CLPlacemark+Yep.swift */; };
 		F0439B471CAA199100961268 /* Double+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B2C1CAA199100961268 /* Double+Yep.swift */; };
 		F0439B481CAA199100961268 /* NSBundle+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B2D1CAA199100961268 /* NSBundle+Yep.swift */; };
@@ -86,8 +87,6 @@
 		F06B86EA1CAAF68D0001149F /* OpenGraphInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86E91CAAF68D0001149F /* OpenGraphInfoType.swift */; };
 		F06B86F81CAAF7810001149F /* OpenGraphService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86EE1CAAF7810001149F /* OpenGraphService.swift */; };
 		F06B86F91CAAF7810001149F /* SocialWorkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86EF1CAAF7810001149F /* SocialWorkService.swift */; };
-		F06B86FA1CAAF7810001149F /* YepAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F01CAAF7810001149F /* YepAudioService.swift */; };
-		F06B86FB1CAAF7810001149F /* YepDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F11CAAF7810001149F /* YepDownloader.swift */; };
 		F06B86FC1CAAF7810001149F /* YepLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F21CAAF7810001149F /* YepLocationService.swift */; };
 		F06B86FD1CAAF7810001149F /* YepNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F31CAAF7810001149F /* YepNetworking.swift */; };
 		F06B86FE1CAAF7810001149F /* YepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86F41CAAF7810001149F /* YepService.swift */; };
@@ -100,6 +99,8 @@
 		05686F10982796B3E6726078 /* Pods-fitu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fitu/Pods-fitu.debug.xcconfig"; sourceTree = "<group>"; };
 		1D25149FB86B3F3D2258356F /* Pods-fitu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitu.release.xcconfig"; path = "Pods/Target Support Files/Pods-fitu/Pods-fitu.release.xcconfig"; sourceTree = "<group>"; };
 		7ECDD3ED2C75B0B8E259F1C2 /* Pods_fitu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F011DD481CB5DBF700BB0627 /* YepTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepTabBar.swift; sourceTree = "<group>"; };
+		F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPickAvatarViewController.swift; sourceTree = "<group>"; };
 		F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		F033709F1CAC332A004209C5 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 		F0439B271CAA199100961268 /* CGImage+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Yep.swift"; sourceTree = "<group>"; };
 		F0439B281CAA199100961268 /* CGRect+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Yep.swift"; sourceTree = "<group>"; };
 		F0439B291CAA199100961268 /* CGSize+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Yep.swift"; sourceTree = "<group>"; };
-		F0439B2A1CAA199100961268 /* CLLocationCoordinate2D+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Yep.swift"; sourceTree = "<group>"; };
 		F0439B2B1CAA199100961268 /* CLPlacemark+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLPlacemark+Yep.swift"; sourceTree = "<group>"; };
 		F0439B2C1CAA199100961268 /* Double+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Yep.swift"; sourceTree = "<group>"; };
 		F0439B2D1CAA199100961268 /* NSBundle+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Yep.swift"; sourceTree = "<group>"; };
@@ -180,8 +180,6 @@
 		F06B86E91CAAF68D0001149F /* OpenGraphInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGraphInfoType.swift; sourceTree = "<group>"; };
 		F06B86EE1CAAF7810001149F /* OpenGraphService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGraphService.swift; sourceTree = "<group>"; };
 		F06B86EF1CAAF7810001149F /* SocialWorkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWorkService.swift; sourceTree = "<group>"; };
-		F06B86F01CAAF7810001149F /* YepAudioService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepAudioService.swift; sourceTree = "<group>"; };
-		F06B86F11CAAF7810001149F /* YepDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepDownloader.swift; sourceTree = "<group>"; };
 		F06B86F21CAAF7810001149F /* YepLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepLocationService.swift; sourceTree = "<group>"; };
 		F06B86F31CAAF7810001149F /* YepNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepNetworking.swift; sourceTree = "<group>"; };
 		F06B86F41CAAF7810001149F /* YepService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepService.swift; sourceTree = "<group>"; };
@@ -311,6 +309,7 @@
 				F06B86C31CAAE9980001149F /* TextFields */,
 				F0439B221CAA190D00961268 /* ProgressViews */,
 				F0439B111CAA181700961268 /* Buttons */,
+				F011DD481CB5DBF700BB0627 /* YepTabBar.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -345,7 +344,6 @@
 				F0439B271CAA199100961268 /* CGImage+Yep.swift */,
 				F0439B281CAA199100961268 /* CGRect+Yep.swift */,
 				F0439B291CAA199100961268 /* CGSize+Yep.swift */,
-				F0439B2A1CAA199100961268 /* CLLocationCoordinate2D+Yep.swift */,
 				F0439B2B1CAA199100961268 /* CLPlacemark+Yep.swift */,
 				F0439B2C1CAA199100961268 /* Double+Yep.swift */,
 				F0439B2D1CAA199100961268 /* NSBundle+Yep.swift */,
@@ -385,6 +383,7 @@
 				F06B86BE1CAAE9270001149F /* BaseViewController.swift */,
 				F03370AE1CAC6009004209C5 /* TabBarViewController.swift */,
 				F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */,
+				F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */,
 				F03370B61CAC61AF004209C5 /* ProfileViewController.swift */,
 				F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */,
 				F03370B01CAC6133004209C5 /* FeedsViewController.swift */,
@@ -457,8 +456,6 @@
 			children = (
 				F06B86EE1CAAF7810001149F /* OpenGraphService.swift */,
 				F06B86EF1CAAF7810001149F /* SocialWorkService.swift */,
-				F06B86F01CAAF7810001149F /* YepAudioService.swift */,
-				F06B86F11CAAF7810001149F /* YepDownloader.swift */,
 				F06B86F21CAAF7810001149F /* YepLocationService.swift */,
 				F06B86F31CAAF7810001149F /* YepNetworking.swift */,
 				F06B86F41CAAF7810001149F /* YepService.swift */,
@@ -502,6 +499,7 @@
 				TargetAttributes = {
 					F0439AF41CAA15EF00961268 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 845RSTGC87;
 					};
 				};
 			};
@@ -603,7 +601,6 @@
 				F0439B1D1CAA18E600961268 /* MessageTypeButton.swift in Sources */,
 				F06B86BF1CAAE9270001149F /* BaseViewController.swift in Sources */,
 				F0439B501CAA199100961268 /* NSURLRequest+cURL.swift in Sources */,
-				F06B86FA1CAAF7810001149F /* YepAudioService.swift in Sources */,
 				F0439B4D1CAA199100961268 /* NSParagraphStyle+Yep.swift in Sources */,
 				F03370A91CAC5685004209C5 /* ShowStepMeetViewController.swift in Sources */,
 				F06B86DE1CAAEA800001149F /* YepHUD.swift in Sources */,
@@ -614,13 +611,11 @@
 				F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */,
 				F0439B471CAA199100961268 /* Double+Yep.swift in Sources */,
 				F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */,
-				F06B86FB1CAAF7810001149F /* YepDownloader.swift in Sources */,
 				F03370C21CAC76CB004209C5 /* FastImageHelper.swift in Sources */,
 				F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */,
 				F0439B551CAA199100961268 /* UIColor+Yep.swift in Sources */,
 				F06B86DB1CAAEA800001149F /* YepAlert.swift in Sources */,
 				F06B86CB1CAAE9EC0001149F /* FPSLabel.swift in Sources */,
-				F0439B451CAA199100961268 /* CLLocationCoordinate2D+Yep.swift in Sources */,
 				F06B86FD1CAAF7810001149F /* YepNetworking.swift in Sources */,
 				F06B86DD1CAAEA800001149F /* YepHelpers.swift in Sources */,
 				F0439B5B1CAA199100961268 /* UIViewController+Yep.swift in Sources */,
@@ -631,6 +626,8 @@
 				F0439B511CAA199100961268 /* PHImageRequestOptions+Yep.swift in Sources */,
 				F0439B421CAA199100961268 /* CGImage+Yep.swift in Sources */,
 				F0439B211CAA18E600961268 /* YepButton.swift in Sources */,
+				F011DD4B1CB5E16200BB0627 /* PhotoViewerViewController.swift in Sources */,
+				F011DD491CB5DBF700BB0627 /* YepTabBar.swift in Sources */,
 				F03370B71CAC61AF004209C5 /* ProfileViewController.swift in Sources */,
 				F0439B4E1CAA199100961268 /* NSTimeZone+Yep.swift in Sources */,
 				F0439B411CAA199100961268 /* Array+Yep.swift in Sources */,
@@ -777,10 +774,11 @@
 			baseConfigurationReference = 05686F10982796B3E6726078 /* Pods-fitu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = fitu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fitu.fitu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ct.fitU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -790,10 +788,11 @@
 			baseConfigurationReference = 1D25149FB86B3F3D2258356F /* Pods-fitu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = fitu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fitu.fitu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ct.fitU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

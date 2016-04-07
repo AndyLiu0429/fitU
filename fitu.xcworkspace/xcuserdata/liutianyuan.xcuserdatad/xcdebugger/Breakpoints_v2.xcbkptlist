@@ -6,31 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitu/YepUserDefaults.swift"
-            timestampString = "480980193.500886"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "height"
-            landmarkType = "19">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitu/registerPickGender.swift"
-            timestampString = "480992192.880235"
+            timestampString = "481668145.461457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "nextTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -38,23 +22,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitu/ShowViewController.swift"
-            timestampString = "481056780.808267"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "ShowViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitu/PhotoInfo.swift"
@@ -63,6 +31,162 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
             endingLineNumber = "11">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitu/RegisterPickAvatarViewController.swift"
+            timestampString = "481665768.392227"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "RegisterPickAvatarViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.(avatarImageView in _829BEDBE09D61AF20479E9316CEAC28E).getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665768.882289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.(avatarImageView in _829BEDBE09D61AF20479E9316CEAC28E).setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665768.88249"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; fitu.RegisterPickAvatarViewController"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665768.88262"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;fitu.RegisterPickAvatarViewController&gt;"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665768.882806"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitu/RegisterPickAvatarViewController.swift"
+            timestampString = "481665792.474646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "RegisterPickAvatarViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.(retakeButton in _829BEDBE09D61AF20479E9316CEAC28E).getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIButton&gt;"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665792.479891"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.(retakeButton in _829BEDBE09D61AF20479E9316CEAC28E).setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIButton&gt;"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665792.480167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; fitu.RegisterPickAvatarViewController"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665792.480377"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "441">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fitu.RegisterPickAvatarViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;fitu.RegisterPickAvatarViewController&gt;"
+                  moduleName = "fitu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liutianyuan/Desktop/swift-workplace/fitu/fitu/RegisterPickAvatarViewController.swift"
+                  timestampString = "481665792.480555"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "351">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

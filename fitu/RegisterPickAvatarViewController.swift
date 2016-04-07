@@ -160,7 +160,7 @@ class RegisterPickAvatarViewController: SegueViewController {
     // MARK: Actions
     
     @objc private func next(sender: UIBarButtonItem) {
-        uploadAvatarAndGotoPickSkills()
+        uploadAvatar()
     }
     
     @IBAction private func tryOpenCamera(sender: UIButton) {
@@ -223,7 +223,7 @@ class RegisterPickAvatarViewController: SegueViewController {
         })
     }
     
-    private func uploadAvatarAndGotoPickSkills() {
+    private func uploadAvatar() {
         
         YepHUD.showActivityIndicator()
         
@@ -233,7 +233,7 @@ class RegisterPickAvatarViewController: SegueViewController {
         
         if let imageData = imageData {
             
-            updateAvatarWithImageData(imageData, failureHandler: { (reason, errorMessage) in
+            updateAvatarWithImageData(YepUserDefaults.username.value!, imageData: imageData, failureHandler: { (reason, errorMessage) in
                 
                 defaultFailureHandler(reason: reason, errorMessage: errorMessage)
                 
@@ -246,7 +246,21 @@ class RegisterPickAvatarViewController: SegueViewController {
                         
                         YepUserDefaults.avatarURLString.value = newAvatarURLString
                         
-                        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+                            appDelegate.startMainStory()
+                        }
+                        
+//                      self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                     //   print("start main story")
+                        
+//                          self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                        
+                        
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                       
+//                        let vc = storyboard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
+//                        self.presentViewController(vc, animated: true, completion: nil)
+
                     }
             })
         }
@@ -254,7 +268,7 @@ class RegisterPickAvatarViewController: SegueViewController {
     
     @IBAction private func captureOrFinish(sender: UIButton) {
         if pickAvatarState == .Captured {
-            uploadAvatarAndGotoPickSkills()
+            uploadAvatar()
             
         } else {
             dispatch_async(sessionQueue) { [weak self] in

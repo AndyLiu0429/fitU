@@ -38,50 +38,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     struct Notification {
         static let applicationDidBecomeActive = "applicationDidBecomeActive"
     }
-    
-    private func realmConfig() -> Realm.Configuration {
-        
-        // 默认将 Realm 放在 App Group 里
-        
-        let directory: NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(YepConfig.appGroupID)!
-        let realmPath = directory.URLByAppendingPathComponent("db.realm").path!
-        
-        return Realm.Configuration(path: realmPath, schemaVersion: 25, migrationBlock: { migration, oldSchemaVersion in
-        })
-    }
-    
-    enum RemoteNotificationType: String {
-        case Message = "message"
-        case OfficialMessage = "official_message"
-        case FriendRequest = "friend_request"
-        case MessageDeleted = "message_deleted"
-    }
-    
-    private var remoteNotificationType: RemoteNotificationType? {
-        willSet {
-            if let type = newValue {
-                switch type {
-                    
-                case .Message, .OfficialMessage:
-                    lauchStyle.value = .Message
-                    
-                default:
-                    break
-                }
-            }
-        }
-    }
+//    
+//    private func realmConfig() -> Realm.Configuration {
+//        
+//        // 默认将 Realm 放在 App Group 里
+//        
+//        let directory: NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(YepConfig.appGroupID)!
+//        let realmPath = directory.URLByAppendingPathComponent("db.realm").path!
+//        
+//        return Realm.Configuration(path: realmPath, schemaVersion: 25, migrationBlock: { migration, oldSchemaVersion in
+//        })
+//    }
+//    
+//    enum RemoteNotificationType: String {
+//        case Message = "message"
+//        case OfficialMessage = "official_message"
+//        case FriendRequest = "friend_request"
+//        case MessageDeleted = "message_deleted"
+//    }
+//    
+//    private var remoteNotificationType: RemoteNotificationType? {
+//        willSet {
+//            if let type = newValue {
+//                switch type {
+//                    
+//                case .Message, .OfficialMessage:
+//                    lauchStyle.value = .Message
+//                    
+//                default:
+//                    break
+//                }
+//            }
+//        }
+//    }
     
     // MARK: Life Circle
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Realm.Configuration.defaultConfiguration = realmConfig()
+        //Realm.Configuration.defaultConfiguration = realmConfig()
         
         
         delay(0.5) {
             //Fabric.with([Crashlytics.self])
-            Fabric.with([Crashlytics.self, Appsee.self])
+            //Fabric.with([Crashlytics.self, Appsee.self])
             
             /*
              #if STAGING
@@ -104,15 +104,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isLogined = YepUserDefaults.isLogined
         
         if isLogined {
-            
-            // 记录启动通知类型
-            if let
-                notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? UILocalNotification,
-                userInfo = notification.userInfo,
-                type = userInfo["type"] as? String {
-                remoteNotificationType = RemoteNotificationType(rawValue: type)
-            }
-            
+//            
+//            // 记录启动通知类型
+//            if let
+//                notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? UILocalNotification,
+//                userInfo = notification.userInfo
+////                type = userInfo["type"] as? String {
+////                //remoteNotificationType = RemoteNotificationType(rawValue: type)
+////            }
+//            
         } else {
             startShowStory()
         }
@@ -169,82 +169,82 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: APNs
+//    
+//    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+//        
+//        println("Fetch Back")
+//        
+//    }
+//    
+//    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+//        
+//        defer {
+//            completionHandler()
+//        }
+//        
+//        guard #available(iOS 9, *) else {
+//            return
+//        }
+//        
+//       
+//        
+//          }
+//    
     
-    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        
-        println("Fetch Back")
-        
-    }
+//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+//        
+//        println("didReceiveRemoteNotification: \(userInfo)")
+//        //JPUSHService.handleRemoteNotification(userInfo)
+//            }
     
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
-        
-        defer {
-            completionHandler()
-        }
-        
-        guard #available(iOS 9, *) else {
-            return
-        }
-        
-       
-        
-          }
-    
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        
-        println("didReceiveRemoteNotification: \(userInfo)")
-        //JPUSHService.handleRemoteNotification(userInfo)
-            }
-    
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        
-        println(error.description)
-    }
-    
+//    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+//        
+//        println(error.description)
+//    }
+//    
     // MARK: Open URL
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        
-        
-        if url.absoluteString.contains("/auth/success") {
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(YepConfig.Notification.OAuthResult, object: NSNumber(int: 1))
-            
-        } else if url.absoluteString.contains("/auth/failure") {
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(YepConfig.Notification.OAuthResult, object: NSNumber(int: 0))
-            
-        }
-        
-        if MonkeyKing.handleOpenURL(url) {
-            return true
-        }
-        
-        return false
-    }
-    
-    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
-        
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-                    //            if let webpageURL = userActivity.webpageURL {
-            //                if !handleUniversalLink(webpageURL) {
-            //                    UIApplication.sharedApplication().openURL(webpageURL)
-            //                }
-            //            } else {
-            //                return false
-            //            }
-        }
-        
-        return true
-    }
-    
+//    
+//    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+//        
+//        
+//        if url.absoluteString.contains("/auth/success") {
+//            
+//            NSNotificationCenter.defaultCenter().postNotificationName(YepConfig.Notification.OAuthResult, object: NSNumber(int: 1))
+//            
+//        } else if url.absoluteString.contains("/auth/failure") {
+//            
+//            NSNotificationCenter.defaultCenter().postNotificationName(YepConfig.Notification.OAuthResult, object: NSNumber(int: 0))
+//            
+//        }
+//        
+//        if MonkeyKing.handleOpenURL(url) {
+//            return true
+//        }
+//        
+//        return false
+//    }
+//    
+//    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+//        
+//        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+//                    //            if let webpageURL = userActivity.webpageURL {
+//            //                if !handleUniversalLink(webpageURL) {
+//            //                    UIApplication.sharedApplication().openURL(webpageURL)
+//            //                }
+//            //            } else {
+//            //                return false
+//            //            }
+//        }
+//        
+//        return true
+//    }
+//    
     
     // MARK: Public
     
     func startShowStory() {
         
-        let storyboard = UIStoryboard(name: "Show", bundle: nil)
+        let storyboard = UIStoryboard(name: "show", bundle: nil)
         let rootViewController = storyboard.instantiateViewControllerWithIdentifier("ShowNavigationController") as! UINavigationController
         window?.rootViewController = rootViewController
     }

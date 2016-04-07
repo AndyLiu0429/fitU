@@ -8,19 +8,22 @@
 
 import UIKit
 
+
+
 class registerPickGender: UIViewController {
+    
+    let BodyShape = ["Pear", "Apple", "Banana"]
+    let GenderData = ["Male", "Female"]
     
     var username: String!
     var password: String!
 
-      @IBOutlet weak var measurementLabel: UILabel!
+    @IBOutlet weak var measurementLabel: UILabel!
     
     @IBOutlet weak var genderLabel: UILabel!
     
     @IBOutlet weak var heightLabel: UILabel!
-    @IBOutlet weak var genderSegment: UISegmentedControl!
-    
-    
+    @IBOutlet var genderSegment: UISegmentedControl!
     
     
     @IBOutlet weak var heightTextField: UITextField!
@@ -36,9 +39,37 @@ class registerPickGender: UIViewController {
     
     @IBOutlet weak var bodyShapeSegment: UISegmentedControl!
     
+    var gender: String = "Male"
+    var bodyShape: String = "Pear"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+          }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+   
+    @IBAction func onGenderChange(sender: AnyObject) {
+                gender = GenderData[genderSegment.selectedSegmentIndex]
+    }
+    
+    
+    @IBAction func onShapeChange(sender: AnyObject) {
+        bodyShape = BodyShape[bodyShapeSegment.selectedSegmentIndex]
+    }
+    
     @IBAction func nextTapped(sender: AnyObject) {
         let heightField = heightTextField.text!
         let weightField = weightTextField.text!
+        
         
         if (heightField.isEmpty || weightField.isEmpty) {
             YepAlert.alertSorry(message: "Please input all measurements", inViewController: self, withDismissAction: { [weak self] in
@@ -46,12 +77,14 @@ class registerPickGender: UIViewController {
                 })
         }
         
-        YepUserDefaults.height.value = heightField
-        YepUserDefaults.weight.value = weightField
-        YepUserDefaults.gender.value = String(genderSegment.selectedSegmentIndex)
-        YepUserDefaults.bodyShape.value = String(bodyShapeSegment.selectedSegmentIndex)
+//        YepUserDefaults.height.value = heightField
+//        YepUserDefaults.weight.value = weightField
+//        YepUserDefaults.gender.value = gender
+//        YepUserDefaults.bodyShape.value = bodyShape
         
-        registerUsername(username, password: password, height: heightField, weight: weightField, bodyShape: bodyShapeSegment.selectedSegmentIndex, gender: genderSegment.selectedSegmentIndex, failureHandler: {
+       
+
+        registerUsername(username, password: password, height: heightField, weight: weightField, bodyShape: bodyShape, gender: gender, failureHandler: {
             (reason, errorMessage) in
             defaultFailureHandler(reason: reason, errorMessage: errorMessage)
             

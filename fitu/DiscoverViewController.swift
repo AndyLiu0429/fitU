@@ -1,65 +1,59 @@
 //
-//  DiscoverViewController.swift
-//  fitu
+//  PhotoBrowserCollectionViewController.swift
+//  PhotoBrowser
 //
-//  Created by 刘 田源 on 3/30/16.
-//  Copyright © 2016 AndyLiu. All rights reserved.
+//  Created by Zhouqi Mo on 12/22/14.
+//  Copyright (c) 2014 Zhouqi Mo. All rights reserved.
 //
 
 import UIKit
+import Foundation
+import CoreData
+import Alamofire
+import FastImageCache
+import SwiftyJSON
 
-class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDelegate {
-
+class DiscoverViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let formatName = KMSmallImageFormatName
+    
     var photos = [PhotoInfo]()
-    
-    var photoCollectionCellIdentifier = "PhotoCell"
-    
     let refreshControl = UIRefreshControl()
     var populatingPhotos = false
     var nextURLRequest: NSURLRequest?
-    let BaseRequest  = "http://haha/photos/"
+    
+    let PhotoBrowserCellIdentifier = "PhotoBrowserCell"
+    let PhotoBrowserFooterViewIdentifier = "PhotoBrowserFooterView"
+    
+    // MARK: Life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupView()
         
-        setUpView()
+       }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
-    private func setUpView() {
-        let layout = CollectionViewWaterfallLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.headerInset = UIEdgeInsetsMake(20, 0, 0, 0)
-        layout.headerHeight = 50
-        layout.footerHeight = 20
-        layout.minimumColumnSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        
-        collectionView.collectionViewLayout = layout
-        collectionView!.registerClass(PhotoCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: photoCollectionCellIdentifier)
-        
-        refreshControl.tintColor = UIColor.whiteColor()
-        refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: .ValueChanged)
-        collectionView!.addSubview(refreshControl)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    @IBAction func unwindToPhotoBrowser (segue : UIStoryboardSegue) {
+        
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    // MARK: CollectionView
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoCollectionCellIdentifier, forIndexPath: indexPath) as! PhotoCollectionViewCell
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserCellIdentifier, forIndexPath: indexPath) as! PhotoBrowserCollectionViewCell
         let sharedImageCache = FICImageCache.sharedImageCache()
         cell.imageView.image = nil
         
@@ -79,18 +73,44 @@ class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDele
         })
         
         return cell
-
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: PhotoBrowserFooterViewIdentifier, forIndexPath: indexPath) as! PhotoBrowserLoadingCollectionView
+        if nextURLRequest == nil {
+            footerView.spinner.stopAnimating()
+        } else {
+            footerView.spinner.startAnimating()
+        }
+        return footerView
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let photoInfo = photos[indexPath.row]
-        performSegueWithIdentifier("showPhoto", sender: ["photoInfo": photoInfo])
+        performSegueWithIdentifier("show photo", sender: ["photoInfo": photoInfo])
     }
     
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return photos[indexPath.item].photoSize
+    func setupCollectionViewLayout() {
+        let layout = UICollectionViewFlowLayout()
+        let column = UI_USER_INTERFACE_IDIOM() == .Pad ? 4 : 3
+        let itemWidth = floor((view.bounds.size.width - CGFloat(column - 1)) / CGFloat(column))
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        layout.minimumInteritemSpacing = 1.0
+        layout.minimumLineSpacing = 1.0
+        layout.footerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 100.0)
+        collectionView!.collectionViewLayout = layout
     }
-
+    
+    func setupView() {
+        setupCollectionViewLayout()
+        collectionView!.registerClass(PhotoBrowserCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: PhotoBrowserCellIdentifier)
+        collectionView!.registerClass(PhotoBrowserLoadingCollectionView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoBrowserFooterViewIdentifier)
+        
+        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: .ValueChanged)
+        collectionView!.addSubview(refreshControl)
+    }
+    
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         
@@ -108,23 +128,18 @@ class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDele
         populatingPhotos = true
         
         Alamofire.request(request).responseJSON() {
-            (_ , _, result) in
+            response in
             defer {
                 self.populatingPhotos = false
             }
-            switch result {
+            switch response.result {
             case .Success(let jsonObject):
                 //debugPrint(jsonObject)
                 let json = JSON(jsonObject)
                 
                 if (json["meta"]["code"].intValue  == 200) {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                        if let urlString = json["pagination"]["next_url"].URL {
-                            self.nextURLRequest = NSURLRequest(URL: urlString)
-                        } else {
-                            self.nextURLRequest = nil
-                        }
-                        let photoInfos = json["data"].arrayValue
+                            let photoInfos = json["data"].arrayValue
                             
                             .filter {
                                 $0["type"].stringValue == "image"
@@ -157,15 +172,30 @@ class DiscoverViewController: UIViewController,CollectionViewWaterfallLayoutDele
         self.photos.removeAll(keepCapacity: false)
         self.collectionView!.reloadData()
         refreshControl.endRefreshing()
-        
-        populatePhotos(BaseRequest)
-        
+//        if user != nil {
+//            let request = Instagram.Router.PopularPhotos(user!.userID, user!.accessToken)
+//            populatePhotos(request)
+//        }
     }
-
-
+    
+//    func hideLogoutButtonItem(hide: Bool) {
+//        if hide {
+//            logoutButtonItem.title = ""
+//            logoutButtonItem.enabled = false
+//        } else {
+//            logoutButtonItem.title = "Logout"
+//            logoutButtonItem.enabled = true
+//        }
+//    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "show photo" && segue.destinationViewController.isKindOfClass(PhotoViewerViewController.classForCoder()) {
+            let photoViewerViewController = segue.destinationViewController as! PhotoViewerViewController
+            photoViewerViewController.photoInfo = sender?.valueForKey("photoInfo") as? PhotoInfo
+        }
+    }
 }
-
-class PhotoCollectionViewCell: UICollectionViewCell {
+class PhotoBrowserCollectionViewCell: UICollectionViewCell {
     let imageView = UIImageView()
     var photoInfo: PhotoInfo?
     
@@ -184,3 +214,18 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
 }
 
+class PhotoBrowserLoadingCollectionView: UICollectionReusableView {
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        spinner.startAnimating()
+        spinner.center = self.center
+        addSubview(spinner)
+    }
+}

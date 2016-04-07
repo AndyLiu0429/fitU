@@ -24,17 +24,6 @@ let discoveredUserSortStyleKey = "discoveredUserSortStyle"
 let feedSortStyleKey = "feedSortStyle"
 
 
-enum Gender:Int {
-    case Male = 0
-    case Female
-}
-
-enum BodyShape:Int {
-    case slim = 0
-    case normal
-    case overweight
-}
-
 struct Listener<T>: Hashable {
     let name: String
     
@@ -99,7 +88,7 @@ class Listenable<T> {
 
 class YepUserDefaults {
     
-    static let defaults = NSUserDefaults(suiteName: YepConfig.appGroupID)!
+    static let defaults = NSUserDefaults.standardUserDefaults()
     
     static var isLogined: Bool {
         
@@ -129,21 +118,21 @@ class YepUserDefaults {
         bodyShape.removeAllListeners()
         gender.removeAllListeners()
         
-        defaults.removeObjectForKey(v1AccessTokenKey)
-        defaults.removeObjectForKey(userIDKey)
-        defaults.removeObjectForKey(usernameKey)
-        defaults.removeObjectForKey(introductionKey)
-        defaults.removeObjectForKey(avatarURLStringKey)
-        defaults.removeObjectForKey(badgeKey)
-        defaults.removeObjectForKey(discoveredUserSortStyleKey)
-        defaults.removeObjectForKey(feedSortStyleKey)
-        
-        defaults.removeObjectForKey(heightKey)
-        defaults.removeObjectForKey(weightKey)
-        defaults.removeObjectForKey(bodyShapeKey)
-        defaults.removeObjectForKey(genderKey)
-        
-        defaults.synchronize()
+//        defaults.removeObjectForKey(v1AccessTokenKey)
+//        defaults.removeObjectForKey(userIDKey)
+//        defaults.removeObjectForKey(usernameKey)
+//        defaults.removeObjectForKey(introductionKey)
+//        defaults.removeObjectForKey(avatarURLStringKey)
+//        defaults.removeObjectForKey(badgeKey)
+//        defaults.removeObjectForKey(discoveredUserSortStyleKey)
+//        defaults.removeObjectForKey(feedSortStyleKey)
+//        
+//        defaults.removeObjectForKey(heightKey)
+//        defaults.removeObjectForKey(weightKey)
+//        defaults.removeObjectForKey(bodyShapeKey)
+//        defaults.removeObjectForKey(genderKey)
+//        
+//        defaults.synchronize()
     }
     
     class func userNeedRelogin() {
@@ -188,18 +177,6 @@ class YepUserDefaults {
         return Listenable<String?>(height) {height in
             defaults.setObject(height, forKey: heightKey)
             
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                height = height,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.height = (height as NSString).floatValue
-                }
-            }
             
         }
     }()
@@ -210,18 +187,6 @@ class YepUserDefaults {
         return Listenable<String?>(weight) {weight in
             defaults.setObject(weight, forKey: weightKey)
             
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                weight = weight,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.weight = (weight as NSString).floatValue
-                }
-            }
             
         }
     }()
@@ -232,18 +197,7 @@ class YepUserDefaults {
         return Listenable<String?>(bodyShape) {bodyShape in
             defaults.setObject(bodyShape, forKey: bodyShapeKey)
             
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                bodyShape = bodyShape,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.bodyShape = Int(bodyShape)!            }
-            }
-            
+          
         }
     }()
     
@@ -252,18 +206,6 @@ class YepUserDefaults {
         
         return Listenable<String?>(gender) {bodyShape in
             defaults.setObject(gender, forKey: genderKey)
-            
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                gender = gender,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.gender = Int(gender)!            }
-            }
             
         }
     }()
@@ -275,19 +217,7 @@ class YepUserDefaults {
         
         return Listenable<String?>(username) { username in
             defaults.setObject(username, forKey: usernameKey)
-            
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                username = username,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.username = username
-                }
-            }
+          
         }
     }()
     
@@ -297,18 +227,7 @@ class YepUserDefaults {
         return Listenable<String?>(introduction) { introduction in
             defaults.setObject(introduction, forKey: introductionKey)
             
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                introduction = introduction,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.introduction = introduction
-                }
-            }
+           
         }
     }()
     
@@ -318,18 +237,6 @@ class YepUserDefaults {
         return Listenable<String?>(avatarURLString) { avatarURLString in
             defaults.setObject(avatarURLString, forKey: avatarURLStringKey)
             
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                avatarURLString = avatarURLString,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.avatarURLString = avatarURLString
-                }
-            }
         }
     }()
     
@@ -339,18 +246,6 @@ class YepUserDefaults {
         return Listenable<String?>(badge) { badge in
             defaults.setObject(badge, forKey: badgeKey)
             
-            guard let realm = try? Realm() else {
-                return
-            }
-            
-            if let
-                badge = badge,
-                myUserID = YepUserDefaults.userID.value,
-                me = userWithUserID(myUserID, inRealm: realm) {
-                let _ = try? realm.write {
-                    me.badge = badge
-                }
-            }
         }
     }()
     
