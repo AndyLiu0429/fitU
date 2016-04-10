@@ -27,7 +27,7 @@ def pods
     pod 'CollectionViewWaterfallLayout'
     pod 'FastImageCache'
     pod 'SwiftyJSON'
-
+    pod 'HanekeSwift'
 end
 
 target ‘fitu’ do

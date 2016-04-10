@@ -13,6 +13,7 @@ PODS:
   - Fabric (1.6.7)
   - FastImageCache (1.5.1)
   - FXBlurView (1.6.4)
+  - HanekeSwift (0.10.1)
   - JPush-iOS-SDK (1.8.8)
   - Kanna (1.0.5)
   - KeyboardMan (0.6.0)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - Fabric
   - FastImageCache
   - FXBlurView
+  - HanekeSwift
   - JPush-iOS-SDK (= 1.8.8)
   - Kanna
   - KeyboardMan
@@ -69,6 +71,7 @@ SPEC CHECKSUMS:
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FastImageCache: 2e7a6f677b15336eb3d1a4092a494676256c891d
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   JPush-iOS-SDK: d4c097d8abbdd0837e24d44b41aacf64a6feddfd
   Kanna: 1df5cd995dc1f3a282e3dcf7521cfef2f069ac4d
   KeyboardMan: 665211f180093f5bb3c6ff7e8b7f858c432c6ccf

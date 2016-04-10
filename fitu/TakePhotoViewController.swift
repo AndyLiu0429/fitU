@@ -23,10 +23,7 @@ class TakePhotoViewController: UIViewController {
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet private weak var retakeButton: UIButton!
     
-    private lazy var nextButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: NSLocalizedString("Next", comment: ""), style: .Plain, target: self, action: "next:")
-        return button
-    }()
+    @IBOutlet weak var tagButton: UIButton!
     
     private var fits = UIImage() {
         willSet {
@@ -38,6 +35,16 @@ class TakePhotoViewController: UIViewController {
         case Default
         case CameraOpen
         case Captured
+        case Tagged
+    }
+    
+    @IBAction func panTaggedButton(sender: UIPanGestureRecognizer) {
+        let translation = sender.translationInView(self.view)
+        
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        
+        sender.setTranslation(CGPointZero, inView: self.view)
+        
     }
     
     private var pickFitsState: PickFitsState = .Default {
@@ -45,6 +52,7 @@ class TakePhotoViewController: UIViewController {
             switch newValue {
             case .Default:
                 openCameraButton.hidden = false
+                tagButton.hidden = true
                 
                 cameraRollButton.hidden = true
                 captureButton.hidden = true
@@ -55,25 +63,24 @@ class TakePhotoViewController: UIViewController {
                 
                 fitsImageView.image = UIImage(named: "default_avatar")
                 
-                nextButton.enabled = false
                 
             case .CameraOpen:
                 openCameraButton.hidden = true
+                tagButton.hidden = true
                 
                 cameraRollButton.hidden = false
                 captureButton.hidden = false
                 retakeButton.hidden = true
                 
                 cameraPreviewView.hidden = false
-                fitsImageView.hidden = false
+                fitsImageView.hidden = true
                 
                 captureButton.setImage(UIImage(named: "button_capture"), forState: .Normal)
                 
-                nextButton.enabled = false
                 
             case .Captured:
                 openCameraButton.hidden = true
-                
+                tagButton.hidden = true
                 cameraRollButton.hidden = false
                 captureButton.hidden = false
                 retakeButton.hidden = false
@@ -83,8 +90,20 @@ class TakePhotoViewController: UIViewController {
                 
                 captureButton.setImage(UIImage(named: "button_capture_ok"), forState: .Normal)
                 
-                nextButton.enabled = true
-            }
+            
+            case .Tagged:
+                openCameraButton.hidden = true
+                cameraRollButton.hidden = true
+                captureButton.hidden = false
+                retakeButton.hidden = true
+                tagButton.hidden = false
+                
+                cameraPreviewView.hidden = true
+                fitsImageView.hidden = false
+                
+                captureButton.setImage(UIImage(named: "button_capture_ok"), forState: .Normal)
+
+                            }
         }
     }
     
@@ -92,7 +111,7 @@ class TakePhotoViewController: UIViewController {
     
     private lazy var session: AVCaptureSession = {
         let _session = AVCaptureSession()
-        _session.sessionPreset = AVCaptureSessionPreset640x480
+        //_session.sessionPreset = AVCaptureSessionPreset640x480
         
         return _session
     }()
@@ -118,9 +137,8 @@ class TakePhotoViewController: UIViewController {
         
         view.backgroundColor = UIColor.yepViewBackgroundColor()
         
-        navigationItem.titleView = NavigationTitleLabel(title: NSLocalizedString("Avatar", comment: ""))
+        navigationItem.titleView = NavigationTitleLabel(title: NSLocalizedString("Take Photo", comment: ""))
         
-        navigationItem.rightBarButtonItem = nextButton
         
         view.backgroundColor = UIColor.whiteColor()
         
@@ -133,12 +151,23 @@ class TakePhotoViewController: UIViewController {
         openCameraButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         openCameraButton.backgroundColor = UIColor.yepTintColor()
         
+        //tagButton.backgroundColor = UIColor.yepTintColor()
+        
         cameraRollButton.tintColor = UIColor.yepTintColor()
         captureButton.tintColor = UIColor.yepTintColor()
         retakeButton.setTitleColor(UIColor.yepTintColor(), forState: .Normal)
+        //tagButton.tintColor = UIColor.yepTintColor()
         
-        nextButton.enabled = false
+        
+        //let panRec = UIPanGestureRecognizer()
+        
+        //tagButton.addTarget(self, action: "wasDragged:event:", forControlEvents: UIControlEvents.TouchDragInside)
+        //tagButton.addGestureRecognizer(panRec)
+        //tagButton.userInteractionEnabled = true
+
     }
+    
+    
     
     // MARK: Helpers
     
@@ -156,10 +185,6 @@ class TakePhotoViewController: UIViewController {
     }
     
     // MARK: Actions
-    
-    @objc private func next(sender: UIBarButtonItem) {
-        uploadAvatar()
-    }
     
     @IBAction private func tryOpenCamera(sender: UIButton) {
         proposeToAccess(.Camera, agreed: {
@@ -211,7 +236,7 @@ class TakePhotoViewController: UIViewController {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .PhotoLibrary
-            imagePicker.allowsEditing = true
+            //imagePicker.allowsEditing = true
             
             self?.presentViewController(imagePicker, animated: true, completion: nil)
         }
@@ -221,52 +246,20 @@ class TakePhotoViewController: UIViewController {
         })
     }
     
-    private func uploadAvatar() {
-        
-        YepHUD.showActivityIndicator()
-        
-        let image = fits.largestCenteredSquareImage().resizeToTargetSize(YepConfig.avatarMaxSize())
-        
-        let imageData = UIImageJPEGRepresentation(image, YepConfig.avatarCompressionQuality())
-        
-        if let imageData = imageData {
-            
-            updateAvatarWithImageData(YepUserDefaults.username.value!, imageData: imageData, failureHandler: { (reason, errorMessage) in
-                
-                defaultFailureHandler(reason: reason, errorMessage: errorMessage)
-                
-                YepHUD.hideActivityIndicator()
-                
-                }, completion: { newAvatarURLString in
-                    YepHUD.hideActivityIndicator()
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        
-                        YepUserDefaults.avatarURLString.value = newAvatarURLString
-                        
-//                        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
-//                            appDelegate.startMainStory()
-//                        }
-                        
-                        //                      self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                        //   print("start main story")
-                        
-                        //                          self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                        
-                        
-                        //                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        //
-                        //                        let vc = storyboard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
-                        //                        self.presentViewController(vc, animated: true, completion: nil)
-                        
-                    }
-            })
-        }
-    }
     
     @IBAction private func captureOrFinish(sender: UIButton) {
         if pickFitsState == .Captured {
-            uploadAvatar()
+            navigationItem.titleView = NavigationTitleLabel(title: NSLocalizedString("Please Tag Photo", comment: ""))
+            
+            //self.fitsImageView.addSubview(tagButton)
+            //self.fitsImageView.bringSubviewToFront(tagButton)
+            self.pickFitsState = .Tagged
+            
+            } else if pickFitsState == .Tagged {
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("addPhotoInfo", sender: nil)
+            })
             
         } else {
             dispatch_async(sessionQueue) { [weak self] in
@@ -285,9 +278,10 @@ class TakePhotoViewController: UIViewController {
                         
                         if let CGImage = image.CGImage {
                             image = UIImage(CGImage: CGImage, scale: image.scale, orientation: .LeftMirrored)
+                            //image = UIImage(CGImage: CGImage)
                         }
-                        
-                        image = image.fixRotation().navi_centerCropWithSize(YepConfig.avatarMaxSize())!
+//                        
+//                        image = image.fixRotation().navi_centerCropWithSize(YepConfig.avatarMaxSize())!
                         
                         dispatch_async(dispatch_get_main_queue()) { [weak self] in
                             guard let strongSelf = self else {
@@ -306,6 +300,23 @@ class TakePhotoViewController: UIViewController {
     @IBAction private func retake(sender: UIButton) {
         pickFitsState = .CameraOpen
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addPhotoInfo" {
+//            let image = fits.largestCenteredSquareImage().resizeToTargetSize(YepConfig.avatarMaxSize())
+//            
+//        
+//            
+//            let imageData = UIImageJPEGRepresentation(image, 1)
+            
+            let vc = segue.destinationViewController as! PhotoInfoViewController
+                
+             
+            vc.imageData = fits.asData()
+        }
+    }
+    
+
 }
 
 // MARK: UIImagePicker

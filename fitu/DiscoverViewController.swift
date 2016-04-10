@@ -1,231 +1,103 @@
-//
-//  PhotoBrowserCollectionViewController.swift
-//  PhotoBrowser
-//
-//  Created by Zhouqi Mo on 12/22/14.
-//  Copyright (c) 2014 Zhouqi Mo. All rights reserved.
-//
-
-import UIKit
-import Foundation
-import CoreData
-import Alamofire
-import FastImageCache
 import SwiftyJSON
+import Alamofire
+import UIKit
+import Haneke
 
-class DiscoverViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+let baseTestURL = "http://52.23.242.123"
+
+class DiscoverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var datas: [SwiftyJSON.JSON] = []
     
-    let formatName = KMSmallImageFormatName
-    
-    var photos = [PhotoInfo]()
-    let refreshControl = UIRefreshControl()
-    var populatingPhotos = false
-    var nextURLRequest: NSURLRequest?
-    
-    let PhotoBrowserCellIdentifier = "PhotoBrowserCell"
-    let PhotoBrowserFooterViewIdentifier = "PhotoBrowserFooterView"
-    
-    // MARK: Life-cycle
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        
-       }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func unwindToPhotoBrowser (segue : UIStoryboardSegue) {
-        
-    }
-    
-    // MARK: CollectionView
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
-    }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserCellIdentifier, forIndexPath: indexPath) as! PhotoBrowserCollectionViewCell
-        let sharedImageCache = FICImageCache.sharedImageCache()
-        cell.imageView.image = nil
-        
-        let photo = photos[indexPath.row] as PhotoInfo
-        if (cell.photoInfo != photo) {
-            
-            sharedImageCache.cancelImageRetrievalForEntity(cell.photoInfo, withFormatName: formatName)
-            
-            cell.photoInfo = photo
+               Alamofire.request(.GET, baseTestURL + "/photos/").responseJSON { response in
+            if response.data != nil {
+                //print(response.data!)
+                //print(response.response)
+                //print(response.result.value)
+                
+                var jsonObj = SwiftyJSON.JSON(response.result.value!)
+                
+                if let data = jsonObj["data"].arrayValue as [SwiftyJSON.JSON]?{
+                    print(data)
+                    self.datas = data
+                    self.tableView.reloadData()
+                }
+            }
         }
         
-        sharedImageCache.retrieveImageForEntity(photo, withFormatName: formatName, completionBlock: {
-            (photoInfo, _, image) -> Void in
-            if (photoInfo as! PhotoInfo) == cell.photoInfo {
-                cell.imageView.image = image
+      }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 400
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 520
+    }
+
+    // MARK: - Table view data source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return datas.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath) as UITableViewCell //1
+//        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        
+        
+        let data = datas[indexPath.row]
+        if let captionLabel = cell.viewWithTag(100) as? UILabel {
+            if let caption = data["brand"].string {
+                captionLabel.text = caption
             }
-        })
+        }
+        if let imageView = cell.viewWithTag(101) as? UIImageView {
+            if let urlString = data["photoUrl"].string{
+                let url = NSURL(string: urlString)
+                //imageView.userInteractionEnabled = true
+                //imageView.addGestureRecognizer(tapGestureRecognizer)
+                imageView.hnk_setImageFromURL(url!)
+            }
+        }
+    
+        if let thumbsUpLabel = cell.contentView.viewWithTag(102) as? UILabel {
+            thumbsUpLabel.text = String(Int(arc4random_uniform(100)))
+            
+        }
+        
+        if let thumbsDownLabel = cell.contentView.viewWithTag(103) as? UILabel {
+            thumbsDownLabel.text = String(Int(arc4random_uniform(50)))
+            
+        }
+        
+        if let commentLabel = cell.contentView.viewWithTag(104) as? UILabel {
+            commentLabel.text = String(Int(arc4random_uniform(100)))
+            
+        }
+        
         
         return cell
     }
-    
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: PhotoBrowserFooterViewIdentifier, forIndexPath: indexPath) as! PhotoBrowserLoadingCollectionView
-        if nextURLRequest == nil {
-            footerView.spinner.stopAnimating()
-        } else {
-            footerView.spinner.startAnimating()
-        }
-        return footerView
-    }
-    
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let photoInfo = photos[indexPath.row]
-        performSegueWithIdentifier("show photo", sender: ["photoInfo": photoInfo])
-    }
-    
-    func setupCollectionViewLayout() {
-        let layout = UICollectionViewFlowLayout()
-        let column = UI_USER_INTERFACE_IDIOM() == .Pad ? 4 : 3
-        let itemWidth = floor((view.bounds.size.width - CGFloat(column - 1)) / CGFloat(column))
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-        layout.minimumInteritemSpacing = 1.0
-        layout.minimumLineSpacing = 1.0
-        layout.footerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 100.0)
-        collectionView!.collectionViewLayout = layout
-    }
-    
-    func setupView() {
-        setupCollectionViewLayout()
-        collectionView!.registerClass(PhotoBrowserCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: PhotoBrowserCellIdentifier)
-        collectionView!.registerClass(PhotoBrowserLoadingCollectionView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoBrowserFooterViewIdentifier)
-        
-        refreshControl.tintColor = UIColor.whiteColor()
-        refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: .ValueChanged)
-        collectionView!.addSubview(refreshControl)
-    }
-    
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        if (self.nextURLRequest != nil && scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8) {
-            populatePhotos(self.nextURLRequest!)
-        }
-    }
-    
-    func populatePhotos(request: URLRequestConvertible) {
-        
-        if populatingPhotos {
-            return
-        }
-        
-        populatingPhotos = true
-        
-        Alamofire.request(request).responseJSON() {
-            response in
-            defer {
-                self.populatingPhotos = false
-            }
-            switch response.result {
-            case .Success(let jsonObject):
-                //debugPrint(jsonObject)
-                let json = JSON(jsonObject)
-                
-                if (json["meta"]["code"].intValue  == 200) {
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                            let photoInfos = json["data"].arrayValue
-                            
-                            .filter {
-                                $0["type"].stringValue == "image"
-                            }.map({
-                                PhotoInfo(sourceImageURL: $0["images"]["standard_resolution"]["url"].URL!)
-                            })
-                        
-                        let lastItem = self.photos.count
-                        self.photos.appendContentsOf(photoInfos)
-                        
-                        let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
-                        
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.collectionView!.insertItemsAtIndexPaths(indexPaths)
-                        }
-                        
-                    }
-                    
-                }
-            case .Failure:
-                break;
-            }
-            
-        }
-    }
-    
-    func handleRefresh() {
-        nextURLRequest = nil
-        refreshControl.beginRefreshing()
-        self.photos.removeAll(keepCapacity: false)
-        self.collectionView!.reloadData()
-        refreshControl.endRefreshing()
-//        if user != nil {
-//            let request = Instagram.Router.PopularPhotos(user!.userID, user!.accessToken)
-//            populatePhotos(request)
-//        }
-    }
-    
-//    func hideLogoutButtonItem(hide: Bool) {
-//        if hide {
-//            logoutButtonItem.title = ""
-//            logoutButtonItem.enabled = false
-//        } else {
-//            logoutButtonItem.title = "Logout"
-//            logoutButtonItem.enabled = true
-//        }
-//    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "show photo" && segue.destinationViewController.isKindOfClass(PhotoViewerViewController.classForCoder()) {
-            let photoViewerViewController = segue.destinationViewController as! PhotoViewerViewController
-            photoViewerViewController.photoInfo = sender?.valueForKey("photoInfo") as? PhotoInfo
-        }
-    }
-}
-class PhotoBrowserCollectionViewCell: UICollectionViewCell {
-    let imageView = UIImageView()
-    var photoInfo: PhotoInfo?
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = UIColor(white: 0.1, alpha: 1.0)
-        
-        imageView.frame = bounds
-        addSubview(imageView)
-    }
-}
 
-class PhotoBrowserLoadingCollectionView: UICollectionReusableView {
-    let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+            //NSLog("You selected cell number: \(indexPath.row)!")
+        var data = datas[indexPath.row]
         
-        spinner.startAnimating()
-        spinner.center = self.center
-        addSubview(spinner)
+        if let url = NSURL(string: data["buylink"].string!) {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
+    
 }

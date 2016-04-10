@@ -14,7 +14,7 @@ import Alamofire
 #if STAGING
 let BaseURL = NSURL(string: "https://park-staging.catchchatchina.com/api")!
 #else
-let BaseURL = NSURL(string: "http://10.128.8.130:8000")!
+let BaseURL = NSURL(string: "http://52.23.242.123")!
 #endif
 
 // Models
@@ -25,8 +25,8 @@ struct LoginUser: CustomStringConvertible {
     let username: String
     let height: Float
     let weight: Float
-    let bodyShape: Int
-    let gender: Int
+    let bodyShape: String
+    let gender: String
     let avatarURLString: String?
     
     var description: String {
@@ -133,11 +133,11 @@ func verifyUsername(username: String, password: String, failureHandler: FailureH
                     {
                         let height = user["height"] as! Float
                         let weight = user["weight"] as! Float
-                        let bodyShape = user["bodyShape"] as! Int
-                        let gender = user["gender"] as! Int
+                        let bodyShape = user["bodyShape"] as! String
+                        let gender = user["gender"] as! String
                         let avatarURLString = user["avatar_url"] as? String
                         
-                        return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape,gender: gender,avatarURLString: avatarURLString)
+                        return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, gender: gender,avatarURLString: avatarURLString)
                 }
             }
         }
@@ -205,6 +205,51 @@ func updateMyselfWithInfo(info: JSONDictionary, failureHandler: FailureHandler?,
     apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
 }
 
+func uploadFits(username: String, brand: String, imageData: NSData, photoUrl: String, failureHandler: FailureHandler?, completion: String -> Void) {
+    let parameters: [String: String] = [
+        "Content-Type": "multipart/form-data"
+    ]
+    
+    let filename = "shabi.jpg"
+    
+    Alamofire.upload(.POST, BaseURL.absoluteString + "/photos/", headers: parameters, multipartFormData: { multipartFormData in
+        
+        multipartFormData.appendBodyPart(data: imageData, name: "photo", fileName: filename, mimeType: "image/jpeg")
+        multipartFormData.appendBodyPart(data: username.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name: "username")
+        multipartFormData.appendBodyPart(data: photoUrl.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name: "buylink")
+        multipartFormData.appendBodyPart(data: brand.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name: "brand")
+        
+        }, encodingCompletion: { encodingResult in
+            println("encodingResult: \(encodingResult)")
+            
+            switch encodingResult {
+                
+            case .Success(let upload, _, _):
+                
+                upload.responseJSON(completionHandler: { response in
+                    
+                    guard let
+                        data = response.data,
+                        json = decodeJSON(data),
+                        photoURLString = json["photoUrl"] as? String
+                        else {
+                            failureHandler?(reason: .CouldNotParseJSON, errorMessage: nil)
+                            return
+                    }
+                    
+                    completion(photoURLString)
+                })
+                
+            case .Failure(let encodingError):
+                
+                failureHandler?(reason: .Other(nil), errorMessage: "\(encodingError)")
+            }
+    })
+
+    
+    
+}
+
 func updateAvatarWithImageData(username: String, imageData: NSData, failureHandler: FailureHandler?, completion: String -> Void) {
 
 //    guard let token = YepUserDefaults.v1AccessToken.value else {
@@ -263,7 +308,7 @@ func loginByUsername(username: String, password: String, failureHandler: Failure
     
     let parse: JSONDictionary -> LoginUser? = { data in
         
-        if let accessToken = data["access_token"] as? String {
+        if let accessToken = data["token"] as? String {
             if let user = data["user"] as? [String: AnyObject] {
                 if
                     let userID = user["id"] as? String,
@@ -271,9 +316,9 @@ func loginByUsername(username: String, password: String, failureHandler: Failure
                 {
                     let height = user["height"] as! Float
                     let weight = user["weight"] as! Float
-                    let bodyShape = user["bodyShape"] as! Int
-                    let gender = user["gender"] as! Int
-                    let avatarURLString = user["avatar_url"] as? String
+                    let bodyShape = user["bodyShape"] as! String
+                    let gender = user["gender"] as! String
+                    let avatarURLString = user["avatarUrl"] as? String
                     
                     return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, gender:gender, avatarURLString: avatarURLString)
                 }
@@ -284,7 +329,7 @@ func loginByUsername(username: String, password: String, failureHandler: Failure
     }
 
     
-    let resource = jsonResource(path: "/v1/auth/token", method: .POST, requestParameters: requestParameters, parse: parse)
+    let resource = jsonResource(path: "api-token-auth/", method: .POST, requestParameters: requestParameters, parse: parse)
     
     apiRequest({_ in}, baseURL: BaseURL, resource: resource, failure: failureHandler, completion: completion)
 }

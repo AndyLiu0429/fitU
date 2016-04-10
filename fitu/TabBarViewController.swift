@@ -10,24 +10,24 @@ class TabBarController: UITabBarController {
     
     private enum Tab: Int {
         
+        case Discover
         case TakePhoto
         case Feeds
-        case Discover
         case Profile
         
-        var title: String {
-            
-            switch self {
-            case .TakePhoto:
-                return NSLocalizedString("Photo", comment: "")
-            case .Feeds:
-                return NSLocalizedString("Feeds", comment: "")
-            case .Discover:
-                return NSLocalizedString("Discover", comment: "")
-            case .Profile:
-                return NSLocalizedString("Profile", comment: "")
-            }
-        }
+//        var title: String {
+//            
+//            switch self {
+//            case .TakePhoto:
+//                return NSLocalizedString("Photo", comment: "")
+//            case .Feeds:
+//                return NSLocalizedString("Feeds", comment: "")
+//            case .Discover:
+//                return NSLocalizedString("Discover", comment: "")
+//            case .Profile:
+//                return NSLocalizedString("Profile", comment: "")
+//            }
+//        }
     }
     
     private var previousTab = Tab.Discover
@@ -82,11 +82,13 @@ class TabBarController: UITabBarController {
         if let items = tabBar.items {
             for i in 0..<items.count {
                 let item = items[i]
-                item.title = Tab(rawValue: i)?.title
+                item.imageInsets =  UIEdgeInsetsMake(6, 0, -6, 0)
+                //item.title = Tab(rawValue: i)?.title
             }
         }
         
         // 处理启动切换
+        
         
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             appDelegate.lauchStyle.bindListener(Listener.lauchStyle) { [weak self] style in
@@ -96,7 +98,17 @@ class TabBarController: UITabBarController {
             }
         }
     }
-}
 
 // MARK: - UITabBarControllerDelegate
+    
+    override func viewWillLayoutSubviews() {
+        var tabFrame = self.tabBar.frame
+        // - 40 is editable , I think the default value is around 50 px, below lowers the tabbar and above increases the tab bar size
+        tabFrame.size.height = 60
+        tabFrame.origin.y = self.view.frame.size.height - 60
+        self.tabBar.frame = tabFrame
+    }
+}
+
+
 

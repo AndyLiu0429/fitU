@@ -10,6 +10,9 @@
 		0C652B7C6B4B159A3AA47B32 /* Pods_fitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECDD3ED2C75B0B8E259F1C2 /* Pods_fitu.framework */; };
 		F011DD491CB5DBF700BB0627 /* YepTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD481CB5DBF700BB0627 /* YepTabBar.swift */; };
 		F011DD4B1CB5E16200BB0627 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */; };
+		F011DD4D1CB6009A00BB0627 /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD4C1CB6009A00BB0627 /* PhotoInfoViewController.swift */; };
+		F011DD4F1CB6ADA200BB0627 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD4E1CB6ADA200BB0627 /* DiscoverViewController.swift */; };
+		F011DD511CB6AED400BB0627 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011DD501CB6AED400BB0627 /* PhotoTableViewCell.swift */; };
 		F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */; };
 		F033709E1CAC2DA9004209C5 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */; };
 		F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033709F1CAC332A004209C5 /* loginViewController.swift */; };
@@ -22,7 +25,6 @@
 		F03370AF1CAC6009004209C5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370AE1CAC6009004209C5 /* TabBarViewController.swift */; };
 		F03370B11CAC6133004209C5 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B01CAC6133004209C5 /* FeedsViewController.swift */; };
 		F03370B31CAC6179004209C5 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */; };
-		F03370B51CAC61A7004209C5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */; };
 		F03370B71CAC61AF004209C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B61CAC61AF004209C5 /* ProfileViewController.swift */; };
 		F03370BA1CAC6B7D004209C5 /* YepNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */; };
 		F03370BE1CAC731D004209C5 /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03370BD1CAC731D004209C5 /* PhotoInfo.swift */; };
@@ -66,6 +68,8 @@
 		F0439B591CAA199100961268 /* UIScrollView+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B3E1CAA199100961268 /* UIScrollView+Yep.swift */; };
 		F0439B5A1CAA199100961268 /* UITableView+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B3F1CAA199100961268 /* UITableView+Yep.swift */; };
 		F0439B5B1CAA199100961268 /* UIViewController+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B401CAA199100961268 /* UIViewController+Yep.swift */; };
+		F05D2DAD1CB823B900E21ECE /* FakeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D2DAC1CB823B900E21ECE /* FakeImageViewController.swift */; };
+		F05D2DAF1CB8265000E21ECE /* fake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F05D2DAE1CB8265000E21ECE /* fake.jpg */; };
 		F06B86BB1CAAE41D0001149F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */; };
 		F06B86BF1CAAE9270001149F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BE1CAAE9270001149F /* BaseViewController.swift */; };
 		F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86C01CAAE9600001149F /* SegueViewController.swift */; };
@@ -101,6 +105,9 @@
 		7ECDD3ED2C75B0B8E259F1C2 /* Pods_fitu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F011DD481CB5DBF700BB0627 /* YepTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepTabBar.swift; sourceTree = "<group>"; };
 		F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		F011DD4C1CB6009A00BB0627 /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
+		F011DD4E1CB6ADA200BB0627 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		F011DD501CB6AED400BB0627 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		F033709A1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPickAvatarViewController.swift; sourceTree = "<group>"; };
 		F033709D1CAC2DA9004209C5 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		F033709F1CAC332A004209C5 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +120,6 @@
 		F03370AE1CAC6009004209C5 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F03370B01CAC6133004209C5 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
-		F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		F03370B61CAC61AF004209C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F03370B91CAC6B7D004209C5 /* YepNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YepNavigationController.swift; sourceTree = "<group>"; };
 		F03370BD1CAC731D004209C5 /* PhotoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 		F0439B3E1CAA199100961268 /* UIScrollView+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Yep.swift"; sourceTree = "<group>"; };
 		F0439B3F1CAA199100961268 /* UITableView+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Yep.swift"; sourceTree = "<group>"; };
 		F0439B401CAA199100961268 /* UIViewController+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Yep.swift"; sourceTree = "<group>"; };
+		F05D2DAC1CB823B900E21ECE /* FakeImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeImageViewController.swift; sourceTree = "<group>"; };
+		F05D2DAE1CB8265000E21ECE /* fake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fake.jpg; sourceTree = "<group>"; };
 		F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F06B86BE1CAAE9270001149F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F06B86C01CAAE9600001149F /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +318,7 @@
 				F0439B221CAA190D00961268 /* ProgressViews */,
 				F0439B111CAA181700961268 /* Buttons */,
 				F011DD481CB5DBF700BB0627 /* YepTabBar.swift */,
+				F011DD501CB6AED400BB0627 /* PhotoTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -382,11 +391,14 @@
 				F033709F1CAC332A004209C5 /* loginViewController.swift */,
 				F06B86BE1CAAE9270001149F /* BaseViewController.swift */,
 				F03370AE1CAC6009004209C5 /* TabBarViewController.swift */,
-				F03370B41CAC61A7004209C5 /* DiscoverViewController.swift */,
+				F011DD4E1CB6ADA200BB0627 /* DiscoverViewController.swift */,
 				F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */,
+				F05D2DAE1CB8265000E21ECE /* fake.jpg */,
+				F011DD4C1CB6009A00BB0627 /* PhotoInfoViewController.swift */,
 				F03370B61CAC61AF004209C5 /* ProfileViewController.swift */,
 				F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */,
 				F03370B01CAC6133004209C5 /* FeedsViewController.swift */,
+				F05D2DAC1CB823B900E21ECE /* FakeImageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -529,6 +541,7 @@
 				F03370A21CAC5465004209C5 /* show.storyboard in Resources */,
 				F0439B061CAA15EF00961268 /* intro.storyboard in Resources */,
 				F0439B4B1CAA199100961268 /* NSDateTimeAgo.bundle in Resources */,
+				F05D2DAF1CB8265000E21ECE /* fake.jpg in Resources */,
 				F03370AD1CAC5FD8004209C5 /* Main.storyboard in Resources */,
 				F0439B031CAA15EF00961268 /* Assets.xcassets in Resources */,
 			);
@@ -607,6 +620,7 @@
 				F03370A01CAC332A004209C5 /* loginViewController.swift in Sources */,
 				F0439B491CAA199100961268 /* NSDate+Extension.swift in Sources */,
 				F03370A41CAC5577004209C5 /* ShowViewController.swift in Sources */,
+				F011DD4F1CB6ADA200BB0627 /* DiscoverViewController.swift in Sources */,
 				F03370B31CAC6179004209C5 /* TakePhotoViewController.swift in Sources */,
 				F0439AF91CAA15EF00961268 /* AppDelegate.swift in Sources */,
 				F0439B471CAA199100961268 /* Double+Yep.swift in Sources */,
@@ -614,6 +628,7 @@
 				F03370C21CAC76CB004209C5 /* FastImageHelper.swift in Sources */,
 				F033709B1CAC2CE2004209C5 /* RegisterPickAvatarViewController.swift in Sources */,
 				F0439B551CAA199100961268 /* UIColor+Yep.swift in Sources */,
+				F011DD511CB6AED400BB0627 /* PhotoTableViewCell.swift in Sources */,
 				F06B86DB1CAAEA800001149F /* YepAlert.swift in Sources */,
 				F06B86CB1CAAE9EC0001149F /* FPSLabel.swift in Sources */,
 				F06B86FD1CAAF7810001149F /* YepNetworking.swift in Sources */,
@@ -658,7 +673,6 @@
 				F03370BA1CAC6B7D004209C5 /* YepNavigationController.swift in Sources */,
 				F06B86CC1CAAE9EC0001149F /* NavigationTitleLabel.swift in Sources */,
 				F0439B1B1CAA18E600961268 /* BorderButton.swift in Sources */,
-				F03370B51CAC61A7004209C5 /* DiscoverViewController.swift in Sources */,
 				F0439B1C1CAA18E600961268 /* EdgeBorderButton.swift in Sources */,
 				F06B86DC1CAAEA800001149F /* YepAsset.swift in Sources */,
 				F0439B441CAA199100961268 /* CGSize+Yep.swift in Sources */,
@@ -669,6 +683,8 @@
 				F06B86D11CAAEA330001149F /* YepHelper.swift in Sources */,
 				F0439B201CAA18E600961268 /* TouchZoomButton.swift in Sources */,
 				F06B86BB1CAAE41D0001149F /* WelcomeViewController.swift in Sources */,
+				F05D2DAD1CB823B900E21ECE /* FakeImageViewController.swift in Sources */,
+				F011DD4D1CB6009A00BB0627 /* PhotoInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
