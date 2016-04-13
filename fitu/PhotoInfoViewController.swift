@@ -15,7 +15,7 @@ class PhotoInfoViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     var brand: String = "H & M"
     var size: String = "M"
     var type: String = "T-Shirt"
-    
+    var tag_pos: CGPoint!
     
       @IBOutlet weak var PromptLabel: UILabel!
     
@@ -130,8 +130,12 @@ class PhotoInfoViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         if segue.identifier == "showFakeImage" {
             
             if let info = sender as? [String: String] {
-                let vc = segue.destinationViewController as! FakeImageViewController
+                let vc = segue.destinationViewController as! FinalImageViewController
                 vc.url = info["buylink"]
+                vc.brand = brand
+                vc.size = size
+                vc.type = type
+                vc.tag_pos = tag_pos
                            }
         }
     }

@@ -3,7 +3,6 @@ import Alamofire
 import UIKit
 import Haneke
 
-let baseTestURL = "http://52.23.242.123"
 
 class DiscoverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var datas: [SwiftyJSON.JSON] = []
@@ -14,9 +13,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
                Alamofire.request(.GET, baseTestURL + "/photos/").responseJSON { response in
             if response.data != nil {
-                //print(response.data!)
-                //print(response.response)
-                //print(response.result.value)
+
                 
                 var jsonObj = SwiftyJSON.JSON(response.result.value!)
                 

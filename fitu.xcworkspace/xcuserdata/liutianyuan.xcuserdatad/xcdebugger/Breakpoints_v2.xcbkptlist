@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitu/DiscoverViewController.swift"
-            timestampString = "481826011.195657"
+            timestampString = "482269457.298463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "DiscoverViewController"
             landmarkType = "3">
          </BreakpointContent>

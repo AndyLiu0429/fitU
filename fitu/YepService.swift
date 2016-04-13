@@ -14,9 +14,9 @@ import Alamofire
 #if STAGING
 let BaseURL = NSURL(string: "https://park-staging.catchchatchina.com/api")!
 #else
-let BaseURL = NSURL(string: "http://52.23.242.123")!
+let BaseURL = NSURL(string: "http://10.128.12.233:8000")!
 #endif
-
+let baseTestURL = "http://10.128.12.233:8000"
 // Models
 
 struct LoginUser: CustomStringConvertible {
@@ -127,6 +127,7 @@ func verifyUsername(username: String, password: String, failureHandler: FailureH
         
         if let accessToken = data["access_token"] as? String {
             if let user = data["user"] as? [String: AnyObject] {
+                
                 if
                     let userID = user["id"] as? String,
                     let username = user["username"] as? String
@@ -136,6 +137,8 @@ func verifyUsername(username: String, password: String, failureHandler: FailureH
                         let bodyShape = user["bodyShape"] as! String
                         let gender = user["gender"] as! String
                         let avatarURLString = user["avatar_url"] as? String
+                        
+                        
                         
                         return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, gender: gender,avatarURLString: avatarURLString)
                 }
@@ -308,21 +311,23 @@ func loginByUsername(username: String, password: String, failureHandler: Failure
     
     let parse: JSONDictionary -> LoginUser? = { data in
         
-        if let accessToken = data["token"] as? String {
-            if let user = data["user"] as? [String: AnyObject] {
-                if
-                    let userID = user["id"] as? String,
-                    let username = user["username"] as? String
-                {
-                    let height = user["height"] as! Float
-                    let weight = user["weight"] as! Float
-                    let bodyShape = user["bodyShape"] as! String
-                    let gender = user["gender"] as! String
-                    let avatarURLString = user["avatarUrl"] as? String
+        
+        let accessToken = data["token"] as! String
+        if let user = data["user"] as? [String: AnyObject] {
+            
+
+            let userIDNum = user["id"] as! NSNumber
+            let userID = userIDNum.stringValue
+            let username = user["username"] as! String
                     
-                    return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, gender:gender, avatarURLString: avatarURLString)
-                }
-            }
+            let height = user["height"] as! Float
+            let weight = user["weight"] as! Float
+            let bodyShape = user["bodyShape"] as! String
+            let gender = user["gender"] as! String
+            let avatarURLString = user["avatarUrl"] as! String
+                    
+                    
+            return LoginUser(accessToken: accessToken, userID: userID, username: username, height:height, weight:weight, bodyShape: bodyShape, gender:gender, avatarURLString: avatarURLString)
         }
         
         return nil

@@ -25,6 +25,8 @@ class TakePhotoViewController: UIViewController {
     
     @IBOutlet weak var tagButton: UIButton!
     
+    var tag_pos: CGPoint!
+    
     private var fits = UIImage() {
         willSet {
             fitsImageView.image = newValue
@@ -42,6 +44,10 @@ class TakePhotoViewController: UIViewController {
         let translation = sender.translationInView(self.view)
         
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        
+        tag_pos = sender.view!.center
+        
+        //print("\(tag_pos)")
         
         sender.setTranslation(CGPointZero, inView: self.view)
         
@@ -311,7 +317,7 @@ class TakePhotoViewController: UIViewController {
             
             let vc = segue.destinationViewController as! PhotoInfoViewController
                 
-             
+            vc.tag_pos = tag_pos
             vc.imageData = fits.asData()
         }
     }

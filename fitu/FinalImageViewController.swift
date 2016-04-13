@@ -8,18 +8,28 @@
 
 import UIKit
 
-class FakeImageViewController: UIViewController {
+class FinalImageViewController: UIViewController {
 
-    
+    var tag_pos:CGPoint!
     var url: String!
-    @IBOutlet weak var fakeImage: UIImageView!
+    var image: NSData!
+    var brand: String = "H & M"
+    var size: String = "M"
+    var type: String = "T-Shirt"
+    
+    @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var finalImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        var fimage: UIImage = UIImage(named: "fake.jpg")!
-        fakeImage.image = fimage
+        
+        finalImage.image = UIImage(data: image)
+        
+        tagButton.center = tag_pos
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +42,7 @@ class FakeImageViewController: UIViewController {
         
         YepHUD.showActivityIndicator()
         
-        uploadFits(YepUserDefaults.username.value!, brand: "Adidas", imageData: fakeImage.image!.asData(), photoUrl: url, failureHandler: { (reason, errorMessage) in
+        uploadFits(YepUserDefaults.username.value!, brand: "Adidas", imageData: finalImage.image!.asData(), photoUrl: url, failureHandler: { (reason, errorMessage) in
             
             defaultFailureHandler(reason: reason, errorMessage: errorMessage)
             

@@ -461,8 +461,8 @@
                                 <exclude reference="6Ri-2E-4jn"/>
                                 <exclude reference="XLJ-oQ-Qqd"/>
                                 <exclude reference="n2A-ML-0mf"/>
-                                <exclude reference="23L-Ej-yBD"/>
                                 <exclude reference="cx9-Gn-NNX"/>
+                                <exclude reference="23L-Ej-yBD"/>
                                 <exclude reference="v8m-YY-yBg"/>
                                 <exclude reference="YIj-2b-eaL"/>
                                 <exclude reference="olU-i7-EEB"/>
@@ -476,8 +476,8 @@
                                 <include reference="6Ri-2E-4jn"/>
                                 <include reference="XLJ-oQ-Qqd"/>
                                 <include reference="n2A-ML-0mf"/>
-                                <include reference="23L-Ej-yBD"/>
                                 <include reference="cx9-Gn-NNX"/>
+                                <include reference="23L-Ej-yBD"/>
                                 <include reference="v8m-YY-yBg"/>
                                 <include reference="YIj-2b-eaL"/>
                                 <include reference="olU-i7-EEB"/>
@@ -603,9 +603,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="25" y="316" width="83" height="24"/>
-                                </variation>
                             </label>
                             <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xN-iD-FWe">
                                 <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
@@ -685,18 +682,18 @@
                                 <exclude reference="9xN-iD-FWe"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Yz8-PA-8p6"/>
-                                <exclude reference="rQQ-P7-f9u"/>
                                 <exclude reference="XIe-wO-kkx"/>
                                 <exclude reference="mzg-eK-I3A"/>
-                                <exclude reference="0Tm-H0-g3S"/>
-                                <exclude reference="fGF-if-EUL"/>
-                                <exclude reference="FeP-fs-gB8"/>
-                                <exclude reference="Ic8-b1-uD3"/>
-                                <exclude reference="Qkq-6C-nCP"/>
-                                <exclude reference="w18-qK-oVq"/>
                                 <exclude reference="0kw-tg-7BD"/>
                                 <exclude reference="iIx-Kr-7Zd"/>
+                                <exclude reference="FeP-fs-gB8"/>
+                                <exclude reference="Ic8-b1-uD3"/>
+                                <exclude reference="0Tm-H0-g3S"/>
+                                <exclude reference="fGF-if-EUL"/>
+                                <exclude reference="Yz8-PA-8p6"/>
+                                <exclude reference="rQQ-P7-f9u"/>
+                                <exclude reference="Qkq-6C-nCP"/>
+                                <exclude reference="w18-qK-oVq"/>
                                 <exclude reference="qTa-DQ-XfI"/>
                                 <exclude reference="vhF-4f-mkM"/>
                                 <exclude reference="I82-Pc-5Zi"/>
@@ -715,18 +712,18 @@
                                 <include reference="9xN-iD-FWe"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Yz8-PA-8p6"/>
-                                <include reference="rQQ-P7-f9u"/>
                                 <include reference="XIe-wO-kkx"/>
                                 <include reference="mzg-eK-I3A"/>
-                                <include reference="0Tm-H0-g3S"/>
-                                <include reference="fGF-if-EUL"/>
-                                <include reference="FeP-fs-gB8"/>
-                                <include reference="Ic8-b1-uD3"/>
-                                <include reference="Qkq-6C-nCP"/>
-                                <include reference="w18-qK-oVq"/>
                                 <include reference="0kw-tg-7BD"/>
                                 <include reference="iIx-Kr-7Zd"/>
+                                <include reference="FeP-fs-gB8"/>
+                                <include reference="Ic8-b1-uD3"/>
+                                <include reference="0Tm-H0-g3S"/>
+                                <include reference="fGF-if-EUL"/>
+                                <include reference="Yz8-PA-8p6"/>
+                                <include reference="rQQ-P7-f9u"/>
+                                <include reference="Qkq-6C-nCP"/>
+                                <include reference="w18-qK-oVq"/>
                                 <include reference="qTa-DQ-XfI"/>
                                 <include reference="vhF-4f-mkM"/>
                                 <include reference="I82-Pc-5Zi"/>
@@ -751,10 +748,10 @@
             </objects>
             <point key="canvasLocation" x="1497" y="842"/>
         </scene>
-        <!--Fake Image View Controller-->
+        <!--Final Image View Controller-->
         <scene sceneID="LIf-db-TXW">
             <objects>
-                <viewController id="6h6-sq-O9T" customClass="FakeImageViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6h6-sq-O9T" customClass="FinalImageViewController" customModule="fitu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pc1-7I-qgO"/>
                         <viewControllerLayoutGuide type="bottom" id="c45-45-P2X"/>
@@ -822,6 +819,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJg-Ee-uf3">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="Tag"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="91" y="384" width="71" height="50"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -839,16 +843,17 @@
                                 <exclude reference="Lrk-G1-uES"/>
                                 <exclude reference="bRS-Uy-NqT"/>
                                 <exclude reference="rg0-Iy-vnr"/>
+                                <exclude reference="bJg-Ee-uf3"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="o7W-Qe-XBG"/>
+                                <exclude reference="MwB-PY-Ut7"/>
                                 <exclude reference="nnc-hc-XXb"/>
                                 <exclude reference="teH-1S-0TG"/>
                                 <exclude reference="xhZ-Dh-xTM"/>
                                 <exclude reference="hbv-Mk-69i"/>
                                 <exclude reference="iK7-LR-lRI"/>
                                 <exclude reference="vc6-jS-UxY"/>
-                                <exclude reference="MwB-PY-Ut7"/>
-                                <exclude reference="o7W-Qe-XBG"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -856,21 +861,24 @@
                                 <include reference="Lrk-G1-uES"/>
                                 <include reference="bRS-Uy-NqT"/>
                                 <include reference="rg0-Iy-vnr"/>
+                                <include reference="bJg-Ee-uf3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="o7W-Qe-XBG"/>
+                                <include reference="MwB-PY-Ut7"/>
                                 <include reference="nnc-hc-XXb"/>
                                 <include reference="teH-1S-0TG"/>
                                 <include reference="xhZ-Dh-xTM"/>
                                 <include reference="hbv-Mk-69i"/>
                                 <include reference="iK7-LR-lRI"/>
                                 <include reference="vc6-jS-UxY"/>
-                                <include reference="MwB-PY-Ut7"/>
-                                <include reference="o7W-Qe-XBG"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="fakeImage" destination="rg0-Iy-vnr" id="dhP-lJ-hH6"/>
+                        <outlet property="finalImage" destination="rg0-Iy-vnr" id="RJb-GI-8la"/>
+                        <outlet property="tagButton" destination="bJg-Ee-uf3" id="xUj-wy-TSb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnT-1s-Evc" userLabel="First Responder" sceneMemberID="firstResponder"/>

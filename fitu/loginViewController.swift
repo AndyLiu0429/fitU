@@ -42,11 +42,11 @@ class loginViewController: UIViewController {
                 })
         }
         
-//        
+        
 //        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
 //            appDelegate.startMainStory()
 //        }
-//        
+
         YepHUD.showActivityIndicator()
         
         loginByUsername(username, password: password, failureHandler: { [weak self] (reason, errorMessage) in

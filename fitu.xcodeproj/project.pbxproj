@@ -68,8 +68,7 @@
 		F0439B591CAA199100961268 /* UIScrollView+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B3E1CAA199100961268 /* UIScrollView+Yep.swift */; };
 		F0439B5A1CAA199100961268 /* UITableView+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B3F1CAA199100961268 /* UITableView+Yep.swift */; };
 		F0439B5B1CAA199100961268 /* UIViewController+Yep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0439B401CAA199100961268 /* UIViewController+Yep.swift */; };
-		F05D2DAD1CB823B900E21ECE /* FakeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D2DAC1CB823B900E21ECE /* FakeImageViewController.swift */; };
-		F05D2DAF1CB8265000E21ECE /* fake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F05D2DAE1CB8265000E21ECE /* fake.jpg */; };
+		F05D2DAD1CB823B900E21ECE /* FinalImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D2DAC1CB823B900E21ECE /* FinalImageViewController.swift */; };
 		F06B86BB1CAAE41D0001149F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */; };
 		F06B86BF1CAAE9270001149F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86BE1CAAE9270001149F /* BaseViewController.swift */; };
 		F06B86C11CAAE9600001149F /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B86C01CAAE9600001149F /* SegueViewController.swift */; };
@@ -165,8 +164,7 @@
 		F0439B3E1CAA199100961268 /* UIScrollView+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Yep.swift"; sourceTree = "<group>"; };
 		F0439B3F1CAA199100961268 /* UITableView+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Yep.swift"; sourceTree = "<group>"; };
 		F0439B401CAA199100961268 /* UIViewController+Yep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Yep.swift"; sourceTree = "<group>"; };
-		F05D2DAC1CB823B900E21ECE /* FakeImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeImageViewController.swift; sourceTree = "<group>"; };
-		F05D2DAE1CB8265000E21ECE /* fake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fake.jpg; sourceTree = "<group>"; };
+		F05D2DAC1CB823B900E21ECE /* FinalImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalImageViewController.swift; sourceTree = "<group>"; };
 		F06B86BA1CAAE41D0001149F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F06B86BE1CAAE9270001149F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F06B86C01CAAE9600001149F /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
@@ -393,12 +391,11 @@
 				F03370AE1CAC6009004209C5 /* TabBarViewController.swift */,
 				F011DD4E1CB6ADA200BB0627 /* DiscoverViewController.swift */,
 				F011DD4A1CB5E16200BB0627 /* PhotoViewerViewController.swift */,
-				F05D2DAE1CB8265000E21ECE /* fake.jpg */,
 				F011DD4C1CB6009A00BB0627 /* PhotoInfoViewController.swift */,
 				F03370B61CAC61AF004209C5 /* ProfileViewController.swift */,
 				F03370B21CAC6179004209C5 /* TakePhotoViewController.swift */,
 				F03370B01CAC6133004209C5 /* FeedsViewController.swift */,
-				F05D2DAC1CB823B900E21ECE /* FakeImageViewController.swift */,
+				F05D2DAC1CB823B900E21ECE /* FinalImageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -541,7 +538,6 @@
 				F03370A21CAC5465004209C5 /* show.storyboard in Resources */,
 				F0439B061CAA15EF00961268 /* intro.storyboard in Resources */,
 				F0439B4B1CAA199100961268 /* NSDateTimeAgo.bundle in Resources */,
-				F05D2DAF1CB8265000E21ECE /* fake.jpg in Resources */,
 				F03370AD1CAC5FD8004209C5 /* Main.storyboard in Resources */,
 				F0439B031CAA15EF00961268 /* Assets.xcassets in Resources */,
 			);
@@ -683,7 +679,7 @@
 				F06B86D11CAAEA330001149F /* YepHelper.swift in Sources */,
 				F0439B201CAA18E600961268 /* TouchZoomButton.swift in Sources */,
 				F06B86BB1CAAE41D0001149F /* WelcomeViewController.swift in Sources */,
-				F05D2DAD1CB823B900E21ECE /* FakeImageViewController.swift in Sources */,
+				F05D2DAD1CB823B900E21ECE /* FinalImageViewController.swift in Sources */,
 				F011DD4D1CB6009A00BB0627 /* PhotoInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
